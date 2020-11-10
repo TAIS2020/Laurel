@@ -12,7 +12,7 @@ public class Notification {
 
 	@Id
 	private Long id;
-	private String idUser;
+	private Long idUser;
 	private String message;
 
 	public Notification() {
@@ -26,11 +26,11 @@ public class Notification {
 		this.id = id;
 	}
 
-	public String getIdUser() {
+	public Long getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(String idUser) {
+	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
 
