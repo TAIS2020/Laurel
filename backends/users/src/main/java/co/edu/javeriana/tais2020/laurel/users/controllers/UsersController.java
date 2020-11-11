@@ -2,7 +2,7 @@ package co.edu.javeriana.tais2020.laurel.users.controllers;
 
 import co.edu.javeriana.tais2020.laurel.users.entities.User;
 import co.edu.javeriana.tais2020.laurel.users.entities.Users;
-import co.edu.javeriana.tais2020.laurel.users.exception.ResourceNotFoundException;
+import co.edu.javeriana.tais2020.laurel.e.exception.ResourceNotFoundException;
 import co.edu.javeriana.tais2020.laurel.users.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,11 +32,6 @@ public class UsersController {
         if (Objects.isNull(user)) throw new ResourceNotFoundException("User not found for id: " + id);
 
         return ResponseEntity.ok(user);
-    }
-
-    @PostMapping
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-        return ResponseEntity.ok(usersService.createUser(user));
     }
 
     @PutMapping("/{id}")
