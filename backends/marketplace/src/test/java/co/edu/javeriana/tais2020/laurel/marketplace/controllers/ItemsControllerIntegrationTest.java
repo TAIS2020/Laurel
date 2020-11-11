@@ -14,13 +14,13 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MarketplaceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ItemsControllerIntegrationTest {
 
+    public static final String API_ENDPOINT = "/api/v1/items";
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -59,37 +59,54 @@ public class ItemsControllerIntegrationTest {
         item.setPrice(54.23f);
         item.setInStock(200);
         item.setDescription("Lindos zapatos");
+        item.setSellerId(125L);
         item.setPhotos(Arrays.asList("https://carapalmer.com/wp-content/uploads/2019/09/free-shoes.jpg", "https://i.ebayimg.com/images/g/ES8AAOSwOZZfK2ba/s-l1600.jpg"));
 
-        ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + "/items", item, Item.class);
+        ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + API_ENDPOINT, item, Item.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+        assertTrue(postResponse.getStatusCode().is2xxSuccessful());
+    }
+
+    @Test
+    public void it_should_fail_create_item_because_missing_seller_id() {
+        Item item = new Item();
+        item.setName("Zapatos");
+        item.setPrice(54.23f);
+        item.setInStock(200);
+        item.setDescription("Lindos zapatos");
+        item.setPhotos(Arrays.asList("https://carapalmer.com/wp-content/uploads/2019/09/free-shoes.jpg", "https://i.ebayimg.com/images/g/ES8AAOSwOZZfK2ba/s-l1600.jpg"));
+
+        ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + API_ENDPOINT, item, Item.class);
+        assertNotNull(postResponse);
+        assertNull(postResponse.getBody());
+        assertTrue(postResponse.getStatusCode().is4xxClientError());
     }
 
     @Test
     public void it_should_update_item() {
         int id = 1;
-        Item item = restTemplate.getForObject(getRootUrl() + "/items/" + id, Item.class);
+        Item item = restTemplate.getForObject(getRootUrl() + API_ENDPOINT + id, Item.class);
         item.setName("mod1");
         item.setPrice(584.41f);
 
 
-        restTemplate.put(getRootUrl() + "/items/" + id, item);
+        restTemplate.put(getRootUrl() + API_ENDPOINT + id, item);
 
-        Item updatedItem = restTemplate.getForObject(getRootUrl() + "/items/" + id, Item.class);
+        Item updatedItem = restTemplate.getForObject(getRootUrl() + API_ENDPOINT + id, Item.class);
         assertNotNull(updatedItem);
     }
 
     @Test
     public void it_should_delete_item() {
         int id = 2;
-        Item item = restTemplate.getForObject(getRootUrl() + "/items/" + id, Item.class);
+        Item item = restTemplate.getForObject(getRootUrl() + API_ENDPOINT + id, Item.class);
         assertNotNull(item);
 
-        restTemplate.delete(getRootUrl() + "/items/" + id);
+        restTemplate.delete(getRootUrl() + API_ENDPOINT + id);
 
         try {
-            restTemplate.getForObject(getRootUrl() + "/items/" + id, Item.class);
+            restTemplate.getForObject(getRootUrl() + API_ENDPOINT + id, Item.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

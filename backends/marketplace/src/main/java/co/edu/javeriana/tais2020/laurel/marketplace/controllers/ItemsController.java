@@ -6,6 +6,7 @@ import co.edu.javeriana.tais2020.laurel.marketplace.exception.ResourceNotFoundEx
 import co.edu.javeriana.tais2020.laurel.marketplace.services.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ import java.util.Objects;
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/items")
+@Validated
 public class ItemsController {
 
     @Autowired
