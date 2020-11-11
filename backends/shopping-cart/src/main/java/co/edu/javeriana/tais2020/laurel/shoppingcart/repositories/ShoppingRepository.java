@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShoppingRepository extends MongoRepository<ShoppingCart, Long> {
+
+    Long deleteByUserIdAndItemId(Long userId, Long itemId);
+    ShoppingCart findByUserIdAndItemId(Long userId, Long itemId);
 }

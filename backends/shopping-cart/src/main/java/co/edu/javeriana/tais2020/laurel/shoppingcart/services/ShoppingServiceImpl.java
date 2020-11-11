@@ -18,28 +18,47 @@ public class ShoppingServiceImpl implements ShoppingService{
     private SequenceGeneratorService sequenceGeneratorService;
 
     public ShoppingCart addItemCart(ShoppingCart shoppingCart){
-        return null;
+        ShoppingCart shoppingFound = findShoppingCart(shoppingCart.getId());
+        if (shoppingFound == null) {
+            //Create
+            shoppingCart.setId(sequenceGeneratorService.generateSequence(shoppingCart.SEQUENCE_NAME));
+            return repository.save(shoppingCart);
+        }
+
+        //Update
+        shoppingFound.setId(shoppingCart.getId());
+        shoppingFound.setUserId(shoppingCart.getUserId());
+        shoppingFound.setItemId(shoppingCart.getItemId());
+        shoppingFound.setQuantity(shoppingCart.getQuantity());
+
+        return repository.save(shoppingFound);
     }
 
-    @Override
-    public boolean deleteItemCart(Long user_id, Long item_id) {
-        ShoppingCart shippingFound = findShoppingCart(user_id,item_id);
-        if (shippingFound == null) return false;
+    private ShoppingCart findShoppingCart(Long id) {
+        Optional<ShoppingCart> shoppingCartOptional = repository.findById(id);
+        if (shoppingCartOptional.isEmpty()) return null;
 
-        repository.delete(shippingFound);
-        return true;
-    }
-
-    private ShoppingCart findShoppingCart(Long user_id, Long item_id) {
-        //Optional<ShoppingCart> shoppingOptional = repository.findAll();
-        if (shoppingOptional.isEmpty()) return null;
-
-        return shoppingOptional.get();
+        return shoppingCartOptional.get();
     }
 
     @Override
     public List<ShoppingCart> getAllShoppingCarts() {
         return null;
+    }
+
+    @Override
+    public ShoppingCart getShoppingCart(Long id) {
+        return findShoppingCart(id);
+    }
+
+    @Override
+    public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteShoppingCart(Long userId, Long itemId) {
+        return (repository.deleteByUserIdAndItemId(userId,itemId) > 0);
     }
 
 }

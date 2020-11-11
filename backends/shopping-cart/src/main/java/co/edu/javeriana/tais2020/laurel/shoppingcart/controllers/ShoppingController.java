@@ -20,7 +20,7 @@ public class ShoppingController {
     private ShoppingService shoppingService;
 
     @GetMapping
-    public ResponseEntity<ShoppingCarts> getUsers() {
+    public ResponseEntity<ShoppingCarts> getShoppingCart() {
         ShoppingCarts shoppingCarts = new ShoppingCarts();
         shoppingCarts.setShoppingCarts(shoppingService.getAllShoppingCarts());
         return ResponseEntity.ok(shoppingCarts);
@@ -38,8 +38,13 @@ public class ShoppingController {
 
     @DeleteMapping("/{user_id}/cart/item/{item_id}")
     public ResponseEntity deleteItemCart(@PathVariable Long user_id, @PathVariable Long item_id) throws ResourceNotFoundException  {
-        if (shoppingService.deleteItemCart(user_id,item_id)) return ResponseEntity.accepted().build();
+        if (shoppingService.deleteShoppingCart(user_id,item_id)) return ResponseEntity.accepted().build();
 
         throw new ResourceNotFoundException("Shopping cart not found for user id: " + user_id + " and item id: " + item_id);
+    }
+
+    @GetMapping("/users/{user_id}/cart")
+    public ResponseEntity getItemCart(@PathVariable Long user_id) throws ResourceNotFoundException  {
+        return null;
     }
 }

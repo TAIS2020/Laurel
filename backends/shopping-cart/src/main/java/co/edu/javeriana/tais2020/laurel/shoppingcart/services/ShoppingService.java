@@ -5,7 +5,9 @@ import co.edu.javeriana.tais2020.laurel.shoppingcart.entities.ShoppingCart;
 import java.util.List;
 
 public interface ShoppingService {
-        ShoppingCart addItemCart(ShoppingCart shoppingCart);
-        boolean deleteItemCart(Long user_id, Long item_id);
         List<ShoppingCart> getAllShoppingCarts();
+        ShoppingCart getShoppingCart(Long id);
+        ShoppingCart updateShoppingCart(ShoppingCart shoppingCart);
+        boolean deleteShoppingCart(Long userId, Long itemId);
+        ShoppingCart addItemCart(ShoppingCart shoppingCart);
 }
