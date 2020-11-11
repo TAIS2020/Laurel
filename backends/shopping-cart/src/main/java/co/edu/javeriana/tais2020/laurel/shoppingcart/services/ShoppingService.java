@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ShoppingService {
         List<ShoppingCart> getAllShoppingCarts();
-        ShoppingCart getShoppingCart(Long id);
+        List<ShoppingCart> getShoppingCarts(Long user_id);
         ShoppingCart updateShoppingCart(ShoppingCart shoppingCart);
         boolean deleteShoppingCart(Long userId, Long itemId);
         ShoppingCart addItemCart(ShoppingCart shoppingCart);

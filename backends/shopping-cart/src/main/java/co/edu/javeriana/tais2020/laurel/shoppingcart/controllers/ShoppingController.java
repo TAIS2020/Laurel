@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -20,7 +21,7 @@ public class ShoppingController {
     private ShoppingService shoppingService;
 
     @GetMapping
-    public ResponseEntity<ShoppingCarts> getShoppingCart() {
+    public ResponseEntity<ShoppingCarts> getShoppingCarts() {
         ShoppingCarts shoppingCarts = new ShoppingCarts();
         shoppingCarts.setShoppingCarts(shoppingService.getAllShoppingCarts());
         return ResponseEntity.ok(shoppingCarts);
@@ -45,6 +46,9 @@ public class ShoppingController {
 
     @GetMapping("/users/{user_id}/cart")
     public ResponseEntity getItemCart(@PathVariable Long user_id) throws ResourceNotFoundException  {
-        return null;
+        List<ShoppingCart> shoppingCart = shoppingService.getShoppingCarts(user_id);
+        if (shoppingCart.isEmpty()) throw new ResourceNotFoundException("Shopping cart not found for user id: " + user_id);
+
+        return ResponseEntity.ok(shoppingCart);
     }
 }

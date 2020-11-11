@@ -5,6 +5,7 @@ import co.edu.javeriana.tais2020.laurel.shoppingcart.repositories.ShoppingReposi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class ShoppingServiceImpl implements ShoppingService{
     private SequenceGeneratorService sequenceGeneratorService;
 
     public ShoppingCart addItemCart(ShoppingCart shoppingCart){
+
         ShoppingCart shoppingFound = findShoppingCart(shoppingCart.getId());
         if (shoppingFound == null) {
             //Create
@@ -35,6 +37,8 @@ public class ShoppingServiceImpl implements ShoppingService{
     }
 
     private ShoppingCart findShoppingCart(Long id) {
+        if(id == null) return null;
+
         Optional<ShoppingCart> shoppingCartOptional = repository.findById(id);
         if (shoppingCartOptional.isEmpty()) return null;
 
@@ -43,12 +47,14 @@ public class ShoppingServiceImpl implements ShoppingService{
 
     @Override
     public List<ShoppingCart> getAllShoppingCarts() {
-        return null;
+        List<ShoppingCart> result = new ArrayList<>();
+        repository.findAll().forEach(result::add);
+        return result;
     }
 
     @Override
-    public ShoppingCart getShoppingCart(Long id) {
-        return findShoppingCart(id);
+    public List<ShoppingCart> getShoppingCarts(Long user_id) {
+        return repository.findByUserId(user_id);
     }
 
     @Override
