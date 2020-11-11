@@ -50,6 +50,7 @@ class UsersControllerTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("156765138");
 
         when(usersService.createUser(any(User.class))).thenReturn(user1);
 
@@ -63,6 +64,7 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.documentType").value(user1.getDocumentType()))
                 .andExpect(jsonPath("$.documentNumber").value(user1.getDocumentNumber()))
                 .andExpect(jsonPath("$.email").value(user1.getEmail()))
+                .andExpect(jsonPath("$.phone").value(user1.getPhone()))
         ;
     }
 
@@ -74,6 +76,7 @@ class UsersControllerTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("50546445");
 
         when(usersService.getUser(any(Long.class))).thenReturn(user1);
 
@@ -86,6 +89,7 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.documentType").value(user1.getDocumentType()))
                 .andExpect(jsonPath("$.documentNumber").value(user1.getDocumentNumber()))
                 .andExpect(jsonPath("$.email").value(user1.getEmail()))
+                .andExpect(jsonPath("$.phone").value(user1.getPhone()))
         ;
     }
 
@@ -97,6 +101,7 @@ class UsersControllerTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("65415045");
 
         when(usersService.updateUser(any(User.class))).thenReturn(user1);
 
@@ -109,7 +114,9 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.lastName").value(user1.getLastName()))
                 .andExpect(jsonPath("$.documentType").value(user1.getDocumentType()))
                 .andExpect(jsonPath("$.documentNumber").value(user1.getDocumentNumber()))
-                .andExpect(jsonPath("$.email").value(user1.getEmail()));
+                .andExpect(jsonPath("$.email").value(user1.getEmail()))
+                .andExpect(jsonPath("$.phone").value(user1.getPhone()))
+        ;
     }
 
     @Test
@@ -129,6 +136,7 @@ class UsersControllerTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("5464357");
         user1.setId(1L);
 
         User user2 = new User();
@@ -137,6 +145,7 @@ class UsersControllerTest {
         user2.setEmail("jane.doe@mail.com");
         user2.setDocumentType("cc");
         user2.setDocumentNumber("999555");
+        user2.setPhone("65751567");
         user2.setId(2L);
 
         when(usersService.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
@@ -149,6 +158,8 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.users[0].id", is(1)))
                 .andExpect(jsonPath("$.users[0].name", is("John")))
                 .andExpect(jsonPath("$.users[1].id", is(2)))
-                .andExpect(jsonPath("$.users[1].name", is("Jane")));
+                .andExpect(jsonPath("$.users[1].name", is("Jane")))
+                .andExpect(jsonPath("$.users[1].phone", is("65751567")))
+        ;
     }
 }

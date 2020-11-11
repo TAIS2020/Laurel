@@ -63,6 +63,7 @@ public class UsersControllerIntegrationTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("5051657");
 
         ResponseEntity<User> postResponse = restTemplate.postForEntity(getRootUrl() + "/users", user1, User.class);
         assertNotNull(postResponse);
@@ -75,6 +76,7 @@ public class UsersControllerIntegrationTest {
         User user1 = restTemplate.getForObject(getRootUrl() + "/users/" + id, User.class);
         user1.setName("mod1");
         user1.setLastName("mod2");
+        user1.setPhone("50424687");
 
         restTemplate.put(getRootUrl() + "/users/" + id, user1);
 

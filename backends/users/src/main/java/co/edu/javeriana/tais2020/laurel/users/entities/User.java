@@ -22,6 +22,10 @@ public class User {
     private String documentNumber;
 
     @NotBlank
+    @Indexed(unique = true)
+    private String phone;
+
+    @NotBlank
     @Size(max = 100)
     @Indexed(unique = true)
     private String email;
@@ -75,5 +79,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

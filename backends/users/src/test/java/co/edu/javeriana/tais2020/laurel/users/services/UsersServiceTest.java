@@ -31,6 +31,7 @@ class UsersServiceTest {
         user1.setEmail("john.foe@mail.com");
         user1.setDocumentType("cc");
         user1.setDocumentNumber("123456");
+        user1.setPhone("1684354");
         user1.setId(1L);
 
         when(usersService.getUser(1L)).thenReturn(user1);
