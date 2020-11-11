@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document(collection = "Item")
@@ -18,6 +19,16 @@ public class Item {
     private float price;
     private int inStock;
     private List<String> photos;
+    @NotNull(message = "seller id is required")
+    private Long sellerId;
+
+    public Long getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
+    }
 
     public Long getId() {
         return id;
