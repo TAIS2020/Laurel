@@ -15,7 +15,8 @@ public class Payment {
 	private Long user_id;
 	private String payment_method;
 	private Long quotas;
-	private BillingAddress billing_address;
+	private String address_number;
+	//private BillingAddress billing_address;
 
 	public Payment() {
 	}
@@ -52,14 +53,13 @@ public class Payment {
 		this.quotas = quotas;
 	}
 
-	public BillingAddress getBilling_address() {
-		return billing_address;
+	public String getAddress_number() {
+		return address_number;
 	}
 
-	public void setBilling_address(BillingAddress billing_address) {
-		this.billing_address = billing_address;
+	public void setAddress_number(String address_number) {
+		this.address_number = address_number;
 	}
-	
-	
+
 
 }

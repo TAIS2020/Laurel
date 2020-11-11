@@ -4,11 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Payment")
+@Document(collection = "BillingAdress")
 public class BillingAddress {
 
 	@Transient
-	public static final String SEQUENCE_NAME = "pay_sequence";
+	public static final String SEQUENCE_NAME = "bill_sequence";
 
 	@Id
 	private Long id;
