@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketplace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marketplace
+  template:
+    metadata:
+      labels:
+        app: marketplace
+    spec:
+      containers:
+        - name: app
+          image: morozco/laurel-marketplace
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URL
+              value: mongodb://mongo:27017/Laurel
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: marketplace
+spec:
+  selector:
+    app: marketplace
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer
