@@ -1,6 +1,7 @@
 #!/bin/bash
 
-printf "Enter service:\n"
+printf "\033c"
+printf "Enter service to DEPLOY:\n"
 printf "[1] marketplace\n"
 printf "[2] notifications\n"
 printf "[3] payments\n"
