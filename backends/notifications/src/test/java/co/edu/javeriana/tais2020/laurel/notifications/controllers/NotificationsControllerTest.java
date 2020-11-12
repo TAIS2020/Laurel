@@ -57,7 +57,7 @@ class NotificationsControllerTest {
 		mockMvc.perform(post("/api/v1/notifications/").content(mapper.writeValueAsString(notification1))
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.idUser").value(notification1.getIdUser()))
-				.andExpect(jsonPath("$.menssage").value(notification1.getMessage()));
+				.andExpect(jsonPath("$.message").value(notification1.getMessage()));
 	}
 
 	@Test
@@ -71,7 +71,7 @@ class NotificationsControllerTest {
 		// test
 		mockMvc.perform(get("/api/v1/notifications/1").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(jsonPath("$.idUser").value(notification1.getIdUser()))
-				.andExpect(jsonPath("$.menssage").value(notification1.getMessage()));
+				.andExpect(jsonPath("$.message").value(notification1.getMessage()));
 	}
 
 	@Test
@@ -86,7 +86,7 @@ class NotificationsControllerTest {
 		mockMvc.perform(put("/api/v1/notifications/1").content(mapper.writeValueAsString(notification1))
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.idUser").value(notification1.getIdUser()))
-				.andExpect(jsonPath("$.menssage").value(notification1.getMessage()));
+				.andExpect(jsonPath("$.message").value(notification1.getMessage()));
 	}
 
 	@Test
@@ -105,8 +105,8 @@ class NotificationsControllerTest {
 		notification1.setId(1L);
 
 		Notification notification2 = new Notification();
-		notification1.setIdUser(34L);
-		notification1.setMessage("Notificar al usuario el envio de la info");
+		notification2.setIdUser(34L);
+		notification2.setMessage("Notificar al usuario el envio de la info");
 		notification2.setId(2L);
 
 		when(NotificationsService.getAllNotifications()).thenReturn(Arrays.asList(notification1, notification2));
@@ -115,12 +115,11 @@ class NotificationsControllerTest {
 		mockMvc.perform(get("/api/v1/notifications/")).andExpect(status().isOk())
 				.andExpect(jsonPath("$.notifications").isArray()).andExpect(jsonPath("$.notifications", hasSize(2)))
 				.andExpect(jsonPath("$.notifications[0].id", is(1)))
-				.andExpect(jsonPath("$.notifications[0].idUser", is(notification1.getIdUser())))
-				.andExpect(jsonPath("$.notifications[0].menssage", is(notification1.getMessage())))
+				.andExpect(jsonPath("$.notifications[0].idUser", is(notification1.getIdUser().intValue())))
+				.andExpect(jsonPath("$.notifications[0].message", is(notification1.getMessage())))
 				.andExpect(jsonPath("$.notifications[1].id", is(2)))
-				.andExpect(jsonPath("$.notifications[1].idUser", is(notification2.getIdUser())))
-				.andExpect(jsonPath("$.notifications[1].menssage", is(notification2.getMessage())))
-
+				.andExpect(jsonPath("$.notifications[1].idUser", is(notification2.getIdUser().intValue())))
+				.andExpect(jsonPath("$.notifications[1].message", is(notification2.getMessage())))
 		;
 	}
 }
