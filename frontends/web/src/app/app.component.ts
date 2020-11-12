@@ -48,8 +48,8 @@ export class AppComponent {
       },
 
       {
-        name: 'Usuarios',
-        routeOrFunction: '/tables/all-in-one-table',
+        name: 'Marketplace',
+        routeOrFunction: '/marketplace',
         icon: 'assignment',
         badgeColor: '#2196F3',
         position: 15,

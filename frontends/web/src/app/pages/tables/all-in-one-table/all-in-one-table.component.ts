@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
 import { ListColumn } from '../../../../@fury/shared/list/list-column.model';
 import { ALL_IN_ONE_TABLE_DEMO_DATA } from './all-in-one-table.demo';
 import { CustomerCreateUpdateComponent } from './customer-create-update/customer-create-update.component';
-import { Customer } from './customer-create-update/customer.model';
+import { Item } from './customer-create-update/item.model';
 import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
 
@@ -24,25 +24,19 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
    * Simulating a service with HTTP that returns Observables
    * You probably want to remove this and do all requests in a service with HTTP
    */
-  subject$: ReplaySubject<Customer[]> = new ReplaySubject<Customer[]>(1);
-  data$: Observable<Customer[]> = this.subject$.asObservable();
-  customers: Customer[];
+  subject$: ReplaySubject<Item[]> = new ReplaySubject<Item[]>(1);
+  data$: Observable<Item[]> = this.subject$.asObservable();
+  customers: Item[];
 
   @Input()
   columns: ListColumn[] = [
-    { name: 'Checkbox', property: 'checkbox', visible: false },
     { name: 'Image', property: 'image', visible: true },
     { name: 'Name', property: 'name', visible: true, isModelProperty: true },
-    { name: 'First Name', property: 'firstName', visible: false, isModelProperty: true },
-    { name: 'Last Name', property: 'lastName', visible: false, isModelProperty: true },
-    { name: 'Street', property: 'street', visible: true, isModelProperty: true },
-    { name: 'Zipcode', property: 'zipcode', visible: true, isModelProperty: true },
-    { name: 'City', property: 'city', visible: true, isModelProperty: true },
-    { name: 'Phone', property: 'phoneNumber', visible: true, isModelProperty: true },
+    { name: 'Price', property: 'price', visible: true, isModelProperty: true },
     { name: 'Actions', property: 'actions', visible: true },
   ] as ListColumn[];
   pageSize = 10;
-  dataSource: MatTableDataSource<Customer> | null;
+  dataSource: MatTableDataSource<Item> | null;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -59,7 +53,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
    * We are simulating this request here.
    */
   getData() {
-    return of(ALL_IN_ONE_TABLE_DEMO_DATA.map(customer => new Customer(customer)));
+    return of(ALL_IN_ONE_TABLE_DEMO_DATA.map(customer => new Item(customer)));
   }
 
   ngOnInit() {
@@ -83,7 +77,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   createCustomer() {
-    this.dialog.open(CustomerCreateUpdateComponent).afterClosed().subscribe((customer: Customer) => {
+    this.dialog.open(CustomerCreateUpdateComponent).afterClosed().subscribe((customer: Item) => {
       /**
        * Customer is the updated customer (if the user pressed Save - otherwise it's null)
        */
@@ -92,7 +86,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
          * Here we are updating our local array.
          * You would probably make an HTTP request here.
          */
-        this.customers.unshift(new Customer(customer));
+        this.customers.unshift(new Item(customer));
         this.subject$.next(this.customers);
       }
     });
@@ -111,7 +105,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
          * You would probably make an HTTP request here.
          */
         const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
-        this.customers[index] = new Customer(customer);
+        this.customers[index] = new Item(customer);
         this.subject$.next(this.customers);
       }
     });

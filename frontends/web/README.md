@@ -351,7 +351,7 @@ export class CustomerService extends BaseService {
 Before using the data, you should map it as a class, so Typescript knows what it is and you know later on too.
 This is a sample `Customer` class.
 
-**customer.model.ts**
+**item.model.ts**
 ```typescript
 export class Customer {
   firstName: string;

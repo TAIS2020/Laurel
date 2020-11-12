@@ -5,16 +5,14 @@
        fxLayoutAlign="start center"
        fxLayoutGap="8px"
        fxLayoutGap.gt-xs="24px">
-    <div class="fury-list-name">{{ name }}</div>
-
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
       <mat-icon class="fury-filter-input-icon">search</mat-icon>
       <input fxFlex class="fury-filter-input" #filter placeholder="Buscar&hellip;">
     </div>
 
-    <button class="fury-column-filter" type="button" mat-icon-button [matMenuTriggerFor]="columnFilter">
-      <mat-icon>filter_list</mat-icon>
-    </button>
+<!--    <button class="fury-column-filter" type="button" mat-icon-button [matMenuTriggerFor]="columnFilter">-->
+<!--      <mat-icon>filter_list</mat-icon>-->
+<!--    </button>-->
     <ng-content select=".actions"></ng-content>
   </div>
 

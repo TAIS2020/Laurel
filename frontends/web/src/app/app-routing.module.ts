@@ -17,7 +17,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'tables/all-in-one-table',
+        path: 'marketplace',
         loadChildren: () => import('./pages/tables/all-in-one-table/all-in-one-table.module').then(m => m.AllInOneTableModule),
       },
 

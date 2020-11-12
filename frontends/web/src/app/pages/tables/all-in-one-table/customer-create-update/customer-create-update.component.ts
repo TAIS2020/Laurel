@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Customer } from './customer.model';
+import { Item } from './item.model';
 
 @Component({
   selector: 'fury-customer-create-update',
@@ -24,7 +24,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
     if (this.defaults) {
       this.mode = 'update';
     } else {
-      this.defaults = {} as Customer;
+      this.defaults = {} as Item;
     }
 
     this.form = this.fb.group({

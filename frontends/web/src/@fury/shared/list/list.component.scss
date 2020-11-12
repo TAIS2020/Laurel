@@ -58,12 +58,12 @@
 
   .mat-cell.image-cell, .mat-header-cell.image-cell {
     flex: 0;
-    width: 35px + $spacing;
+    //width: 35px + $spacing;
 
     img {
-      border-radius: 50%;
-      height: 35px;
-      width: 35px;
+      //border-radius: 50%;
+      //height: 35px;
+      //width: 35px;
       margin-right: $spacing;
       vertical-align: middle;
     }
