@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const controller = require('../domain/login/controller-login')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.json({ title: 'Express' });
-});
+router.post('/', controller);
 
 module.exports = router;
