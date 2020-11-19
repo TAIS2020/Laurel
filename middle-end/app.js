@@ -8,7 +8,8 @@ const apiV1Router = require('./routes/api.v1');
 const loginRouter = require('./routes/login');
 
 // Middlewares
-const verifyJWS = require('./middlewares/jwt-verify')
+const verifyJWS = require('./middlewares/middleware-jwt')
+const platform = require('./middlewares/middleware-platform')
 
 const app = express();
 
@@ -19,6 +20,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', loginRouter);
-app.use('/v1', verifyJWS, apiV1Router);
+app.use('/v1', [platform, verifyJWS], apiV1Router);
 
 module.exports = app;
