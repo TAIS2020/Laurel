@@ -1,10 +1,10 @@
-package edu.co.javeriana.tais2020.laurel.data
+package edu.co.javeriana.tais2020.laurel.menu.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import edu.co.javeriana.tais2020.laurel.model.MenuItem
+import edu.co.javeriana.tais2020.laurel.menu.model.MenuItem
 
 @Database(entities = [MenuItem::class], version = 1, exportSchema = false)
 abstract class MenuItemDatabase: RoomDatabase() {
@@ -14,7 +14,7 @@ abstract class MenuItemDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: MenuItemDatabase? = null
 
-        fun getDatabase(context: Context): MenuItemDatabase{
+        fun getDatabase(context: Context): MenuItemDatabase {
             val tempInstance = INSTANCE
             if(tempInstance != null) {
                 return tempInstance

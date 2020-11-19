@@ -1,10 +1,7 @@
-package edu.co.javeriana.tais2020.laurel.data
+package edu.co.javeriana.tais2020.laurel.login.data
 
-import android.util.Log
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import edu.co.javeriana.tais2020.laurel.model.LoggedInUser
-import kotlinx.coroutines.*
+import edu.co.javeriana.tais2020.laurel.login.model.LoggedInUser
 import kotlinx.coroutines.tasks.await
 import java.io.IOException
 import java.lang.Exception
@@ -32,6 +29,6 @@ class LoginDataSource {
     }
 
     fun logout() {
-        // TODO: revoke authentication
+        auth.signOut()
     }
 }

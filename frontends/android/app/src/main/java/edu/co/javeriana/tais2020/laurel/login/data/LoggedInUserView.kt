@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.data
+package edu.co.javeriana.tais2020.laurel.login.data
 
 /**
  * User details post authentication that is exposed to the UI

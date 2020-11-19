@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.data
+package edu.co.javeriana.tais2020.laurel.login.data
 
 /**
  * A generic class that holds a value with its loading status.

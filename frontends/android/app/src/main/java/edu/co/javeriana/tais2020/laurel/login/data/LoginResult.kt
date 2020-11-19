@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.data
+package edu.co.javeriana.tais2020.laurel.login.data
 
 /**
  * Authentication result : success (user details) or error message.
