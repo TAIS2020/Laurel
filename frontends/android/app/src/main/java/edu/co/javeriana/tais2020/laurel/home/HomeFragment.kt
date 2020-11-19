@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.ui.home
+package edu.co.javeriana.tais2020.laurel.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import edu.co.javeriana.tais2020.laurel.R
-import edu.co.javeriana.tais2020.laurel.ui.ads.AdsListAdapter
+import edu.co.javeriana.tais2020.laurel.ads.AdsListAdapter
 
 class HomeFragment : Fragment() {
 

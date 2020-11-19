@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.ui.notifications
+package edu.co.javeriana.tais2020.laurel.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater

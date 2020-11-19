@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="edu.co.javeriana.tais2020.laurel.ui.home.HomeFragment"
+        android:name="edu.co.javeriana.tais2020.laurel.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_shopping"
-        android:name="edu.co.javeriana.tais2020.laurel.ui.shopping.ShoppingFragment"
+        android:name="edu.co.javeriana.tais2020.laurel.shopping.ShoppingFragment"
         android:label="Shopping"
         tools:layout="@layout/fragment_shopping" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="edu.co.javeriana.tais2020.laurel.ui.notifications.NotificationsFragment"
+        android:name="edu.co.javeriana.tais2020.laurel.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="edu.co.javeriana.tais2020.laurel.ui.menu.MenuFragment"
+        android:name="edu.co.javeriana.tais2020.laurel.menu.MenuFragment"
         android:label="Menu"
         tools:layout="@layout/fragment_menu" />
 </navigation>

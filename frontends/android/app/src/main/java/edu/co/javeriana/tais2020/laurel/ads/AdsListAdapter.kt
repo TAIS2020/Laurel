@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.ui.ads
+package edu.co.javeriana.tais2020.laurel.ads
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.ui.ads
+package edu.co.javeriana.tais2020.laurel.ads
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

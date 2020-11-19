@@ -1,4 +1,4 @@
-package edu.co.javeriana.tais2020.laurel.ui.shopping
+package edu.co.javeriana.tais2020.laurel.shopping
 
 import androidx.lifecycle.ViewModel
 
