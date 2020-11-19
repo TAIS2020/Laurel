@@ -33,6 +33,8 @@
         appId: "1:47910715376:web:e65639d7275afcb0c76735"
       };
 
+      console.log(Cookies.get("XSRF-TOKEN"))
+
       firebase.initializeApp(firebaseConfig);
 
       firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
@@ -54,7 +56,7 @@
                               headers: {
                                 Accept: "application/json",
                                 "Content-Type": "application/json",
-                                // "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                                "CSRF-Token": Cookies.get("XSRF-TOKEN"),
                               },
                               body: JSON.stringify({ idToken }),
                             });
