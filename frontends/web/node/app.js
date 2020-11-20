@@ -3,9 +3,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const csrf = require("csurf");
 const logger = require('morgan');
-const sassMiddleware = require('node-sass-middleware');
+
+// Firebase
 const firebaseAdmin = require('firebase-admin')
 const firebaseServiceAccount = require('./serviceAccountKey.json')
+
+firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(firebaseServiceAccount)
+})
 
 // Routers
 const apiV1Router = require('./routes/api.v1');
@@ -23,25 +28,20 @@ const csrfMiddleware = csrf({
 
 const app = express();
 
-// Firebase
-firebaseAdmin.initializeApp({
-    credential: firebaseAdmin.credential.cert(firebaseServiceAccount)
-})
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(csrfMiddleware);
-app.use(sassMiddleware({
-    src: path.join(__dirname, 'public'),
-    dest: path.join(__dirname, 'public'),
-    indentedSyntax: true, // true = .sass and false = .scss
-    sourceMap: true
-}));
 app.engine("html", require("ejs").renderFile);
-app.use(express.static(path.join(__dirname, 'public')));
 
+const STATIC = path.resolve(__dirname, 'public/dist');
+const INDEX = path.resolve(STATIC, 'index.html');
+app.use(express.static(STATIC));
+
+app.get('/', function (req, res) {
+    res.sendFile(INDEX);
+});
 app.use('/login', [setXSRF], loginRouter);
 app.use('/v1', [setXSRF, platform, verifyJWS], apiV1Router);
 
