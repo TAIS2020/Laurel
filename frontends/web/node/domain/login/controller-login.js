@@ -1,21 +1,20 @@
 const loginService = require('./services/login-service')
+const jwt = require("jsonwebtoken")
 
 const loginController = {
     login: async (req, res) => {
-        const expiresIn = 60 * 60 * 24 * 5 * 1000;
         const idToken = req.body.idToken.toString()
-        const sessionCookie = await loginService(idToken, expiresIn);
+        const user = await loginService.getSignedInUser(idToken)
 
-        if (sessionCookie ) {
-            const options = { maxAge: expiresIn, httpOnly: true };
-            res.cookie("session", sessionCookie, options);
-            res.end(JSON.stringify({ status: "success" }));
-        } else {
-            res.status(401).send("UNAUTHORIZED REQUEST!");
+        console.log(user)
+        if (user == null) {
+            res.status(401).send("Unauthorized");
+            return
         }
-    },
-    loginPage: (req, res) => {
-        res.render("login.html");
+
+        jwt.sign({user}, 'secretKey', (err, token) => {
+            res.json({token})
+        })
     }
 }
 

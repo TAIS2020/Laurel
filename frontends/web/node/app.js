@@ -40,7 +40,7 @@ app.engine("html", require("ejs").renderFile);
 //     res.sendFile(INDEX);
 // });
 app.use('/login', [], loginRouter);
-app.use('/v1', [platform, verifyJWS], apiV1Router);
+app.use('/api/v1', [platform, verifyJWS], apiV1Router);
 
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err)
