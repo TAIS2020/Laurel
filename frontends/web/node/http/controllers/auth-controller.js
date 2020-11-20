@@ -1,4 +1,4 @@
-const loginService = require('./services/login-service')
+const loginService = require('../../services/auth-service')
 const jwt = require("jsonwebtoken")
 
 const loginController = {

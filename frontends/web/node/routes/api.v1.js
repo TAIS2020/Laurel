@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.json({ title: 'this is the api v1', environment: req.environment });
-});
+const usersController = require('../http/controllers/users-controller')
 
 router.get('/ping', (req, res, next) => {
   res.send("pong")
 })
+
+// Users
+router.get('/users', usersController.getUsers)
 
 module.exports = router;

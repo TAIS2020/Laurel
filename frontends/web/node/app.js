@@ -15,7 +15,7 @@ firebaseAdmin.initializeApp({
 
 // Routers
 const apiV1Router = require('./routes/api.v1');
-const loginRouter = require('./routes/login');
+const authRouter = require('./routes/auth');
 
 // Middlewares
 const verifyJWS = require('./middlewares/middleware-jwt')
@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // Routes
-app.use('/login', [], loginRouter);
+app.use('/login', [], authRouter);
 app.use('/api/v1', [identifyPlatform, verifyJWS], apiV1Router);
 
 module.exports = app;
