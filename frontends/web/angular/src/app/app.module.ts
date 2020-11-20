@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pending-interceptor.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 @NgModule({
   imports: [
@@ -31,6 +33,10 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/mater
 
     // Displays Loading Bar when a Route Request or HTTP Request is pending
     PendingInterceptorModule,
+
+    // FireBase
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
 
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

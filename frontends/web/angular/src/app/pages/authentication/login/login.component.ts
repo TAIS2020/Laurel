@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'fury-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
+              private snackbar: MatSnackBar,
+              private authService: AuthService,
   ) {
   }
 
@@ -32,7 +34,16 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/marketplace']);
+    this.authService.SignIn(
+        this.form.controls["email"].value,
+        this.form.controls["password"].value
+    ).then(result => {
+      console.log("Que es esto: ", result)
+      this.router.navigate(['/marketplace'])
+    }).catch(error => {
+      alert(error.message)
+    })
+    // this.router.navigate(['/marketplace']);
     //this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
     //  duration: 10000
     //});

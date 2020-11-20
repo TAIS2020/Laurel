@@ -1,8 +1,9 @@
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
-const csrf = require("csurf");
 const logger = require('morgan');
+
+// CORS
+const cors = require('cors')
 
 // Firebase
 const firebaseAdmin = require('firebase-admin')
@@ -19,31 +20,27 @@ const loginRouter = require('./routes/login');
 // Middlewares
 const verifyJWS = require('./middlewares/middleware-jwt')
 const platform = require('./middlewares/middleware-platform')
-const setXSRF = require('./middlewares/middleware-xsrf')
-const csrfMiddleware = csrf({
-        cookie: true,
-        domain: "laurel.com.mx",
-    }
-);
 
 const app = express();
+
+// This is only for development
+app.use(cors())
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(csrfMiddleware);
 app.engine("html", require("ejs").renderFile);
 
-const STATIC = path.resolve(__dirname, 'public/dist');
-const INDEX = path.resolve(STATIC, 'index.html');
-app.use(express.static(STATIC));
+// const STATIC = path.resolve(__dirname, 'public/dist');
+// const INDEX = path.resolve(STATIC, 'index.html');
+// app.use(express.static(STATIC));
 
-app.get('/', function (req, res) {
-    res.sendFile(INDEX);
-});
-app.use('/login', [setXSRF], loginRouter);
-app.use('/v1', [setXSRF, platform, verifyJWS], apiV1Router);
+// app.get('/', function (req, res) {
+//     res.sendFile(INDEX);
+// });
+app.use('/login', [], loginRouter);
+app.use('/v1', [platform, verifyJWS], apiV1Router);
 
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err)
@@ -54,6 +51,5 @@ app.use((err, req, res, next) => {
         message: "You are not authorized"
     })
 })
-
 
 module.exports = app;
