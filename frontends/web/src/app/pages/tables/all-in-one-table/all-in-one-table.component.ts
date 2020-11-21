@@ -12,6 +12,7 @@ import { Item } from './customer-create-update/item.model';
 import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
 
+
 @Component({
   selector: 'fury-all-in-one-table',
   templateUrl: './all-in-one-table.component.html',

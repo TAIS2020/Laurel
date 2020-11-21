@@ -20,11 +20,14 @@ const routes: Routes = [
         path: 'marketplace',
         loadChildren: () => import('./pages/tables/all-in-one-table/all-in-one-table.module').then(m => m.AllInOneTableModule),
       },
-
+      {
+        path: 'usuarioAll',
+        loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule),
+      }
     ]
   }
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled',
