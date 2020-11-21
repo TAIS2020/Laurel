@@ -62,7 +62,6 @@ export class AppComponent {
         badgeColor: '#2196F3',
         position: 15,
       }
-
     ]);
   }
 }
