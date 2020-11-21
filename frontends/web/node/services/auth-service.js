@@ -34,7 +34,7 @@ const service = {
             console.log(e.message)
             return null
         }
-    }
+    },
 }
 
 module.exports = service
