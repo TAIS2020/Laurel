@@ -23,11 +23,18 @@ const routes: Routes = [
       {
         path: 'usuarioAll',
         loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule),
+      },
+      {
+        path: 'carrito',
+        loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule),
+      },
+      {
+        path: 'articulos',
+        loadChildren: () => import('./pages/articulos/articulos.module').then(m => m.ArticulosModule),
       }
     ]
   }
 ];
-  
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled',
