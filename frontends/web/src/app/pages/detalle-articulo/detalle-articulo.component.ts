@@ -5,38 +5,39 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ALL_CARRITO_DEMO_DATA } from './all-carrito.demo';
-import { Carrito } from './carrito.model';
+import { ALL_DETALLE_ARTICULO_DEMO_DATA } from './all-detalle-articulo.demo';
+import { DetalleArticulo } from './detalle-articulo.model';
 import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 
 @Component({
-  selector: 'fury-carrito',
-  templateUrl: 'carrito.component.html',
-  styleUrls: ['carrito.component.scss'],
+  selector: 'fury-detalle-articulo',
+  templateUrl: 'detalle-articulo.component.html',
+  styleUrls: ['detalle-articulo.component.scss'],
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 
-export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
+export class DetalleArticuloComponent implements OnInit, AfterViewInit, OnDestroy  {/**
   * Simulating a service with HTTP that returns Observables
   * You probably want to remove this and do all requests in a service with HTTP
   */
- subject$: ReplaySubject<Carrito[]> = new ReplaySubject<Carrito[]>(1);
- data$: Observable<Carrito[]> = this.subject$.asObservable();
- customers: Carrito[];
+ subject$: ReplaySubject<DetalleArticulo[]> = new ReplaySubject<DetalleArticulo[]>(1);
+ data$: Observable<DetalleArticulo[]> = this.subject$.asObservable();
+ customers: DetalleArticulo[];
 
  @Input()
  columns: ListColumn[] = [
-  { name: 'Image', property: 'image', visible: true },
    { name: 'Name', property: 'name', visible: true, isModelProperty: true },
-   { name: 'Quantity', property: 'quantity', visible: true, isModelProperty: true },
+   { name: 'Description', property: 'description', visible: true, isModelProperty: true },
    { name: 'Price', property: 'price', visible: true, isModelProperty: true },
+   { name: 'Image', property: 'image', visible: true },
+   { name: 'Stock', property: 'stock', visible: true, isModelProperty: true  },
    { name: 'Actions', property: 'actions', visible: true },
 
   ] as ListColumn[];
  pageSize = 10;
- dataSource: MatTableDataSource<Carrito> | null;
+ dataSource: MatTableDataSource<DetalleArticulo> | null;
 
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -50,7 +51,7 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
 
 
  getData() {
-   return of(ALL_CARRITO_DEMO_DATA.map(customer => new Carrito(customer)));
+   return of(ALL_DETALLE_ARTICULO_DEMO_DATA.map(customer => new DetalleArticulo(customer)));
  }
 
  ngOnInit() {
@@ -111,5 +112,18 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
  ngOnDestroy() {
  }
 
+}
 
+function  openPage(pageName,elmnt,color) {
+  let i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
 }

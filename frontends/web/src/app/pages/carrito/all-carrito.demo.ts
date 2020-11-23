@@ -1,4 +1,4 @@
-export const ALL_ARTICULO_DEMO_DATA = [
+export const ALL_CARRITO_DEMO_DATA = [
   {
     'id': 1,
     'name': 'Bicicleta GX',

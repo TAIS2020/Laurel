@@ -11,6 +11,7 @@ import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pend
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ArticulosComponent } from './pages/articulos/articulos.component';
+import { DetalleArticuloComponent } from './pages/detalle-articulo/detalle-articulo.component';
 
 
 @NgModule({

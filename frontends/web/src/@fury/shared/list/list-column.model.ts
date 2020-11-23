@@ -10,5 +10,6 @@ export class ListColumn {
   quantity?: any;
   price?: any;
   description?: any;
+  stock?: any;
   }
 
