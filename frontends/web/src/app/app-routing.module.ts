@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { DetalleMarkplaceModule } from './pages/detalle-markplace/detalle-markplace.module';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'detalleArticulo',
         loadChildren: () => import('./pages/detalle-articulo/detalle-articulo.module').then(m => m.DetalleArticuloModule),
+      },
+      {
+        path: 'detalleMarketplace',
+        loadChildren: () => import('./pages/detalle-markplace/detalle-markplace.module').then(m => m.DetalleMarkplaceModule),
       }
     ]
   }

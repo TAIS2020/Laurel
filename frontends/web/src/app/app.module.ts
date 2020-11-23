@@ -12,6 +12,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@ang
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ArticulosComponent } from './pages/articulos/articulos.component';
 import { DetalleArticuloComponent } from './pages/detalle-articulo/detalle-articulo.component';
+import { DetalleMarkplaceComponent } from './pages/detalle-markplace/detalle-markplace.component';
 
 
 @NgModule({
