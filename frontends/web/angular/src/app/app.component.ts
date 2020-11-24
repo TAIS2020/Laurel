@@ -53,7 +53,30 @@ export class AppComponent {
         icon: 'assignment',
         badgeColor: '#2196F3',
         position: 15,
+      },
+      {
+        name: 'Usuario',
+        routeOrFunction: '/usuarioAll',
+        icon: 'perm_identity',
+        badgeColor: '#2196F3',
+        position: 15,
+      },
+      {
+        name: 'Carrito',
+        routeOrFunction: '/carrito',
+        icon: 'assignment',
+        badgeColor: '#2196F3',
+        position: 15,
+      },
+      {
+        name: 'Articulos',
+        routeOrFunction: '/articulos',
+        icon: 'assignment',
+        badgeColor: '#2196F3',
+        position: 15,
       }
+
+
     ]);
   }
 }

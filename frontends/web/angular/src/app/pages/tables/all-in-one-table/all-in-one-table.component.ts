@@ -11,6 +11,7 @@ import { CustomerCreateUpdateComponent } from './customer-create-update/customer
 import { Item } from './customer-create-update/item.model';
 import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fury-all-in-one-table',
@@ -41,7 +42,8 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private router: Router,
+    private dialog: MatDialog) {
   }
 
   get visibleColumns() {
@@ -91,24 +93,18 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
       }
     });
   }
-
   updateCustomer(customer) {
-    this.dialog.open(CustomerCreateUpdateComponent, {
+    console.log("Entro....");
+      this.router.navigate(['/detalleMarketplace']);
+    /*this.dialog.open(CustomerCreateUpdateComponent, {
       data: customer
     }).afterClosed().subscribe((customer) => {
-      /**
-       * Customer is the updated customer (if the user pressed Save - otherwise it's null)
-       */
       if (customer) {
-        /**
-         * Here we are updating our local array.
-         * You would probably make an HTTP request here.
-         */
         const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
         this.customers[index] = new Item(customer);
         this.subject$.next(this.customers);
       }
-    });
+    });*/
   }
 
   deleteCustomer(customer) {
