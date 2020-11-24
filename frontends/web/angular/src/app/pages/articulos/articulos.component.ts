@@ -13,6 +13,7 @@ import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
+import { ArticulosService} from '../../services/articulos.service';
 
 @Component({
   selector: 'fury-articulos',
@@ -44,8 +45,11 @@ export class ArticulosComponent  {/**
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
- constructor(private router: Router,
-  private dialog: MatDialog) {
+ constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private articulosService: ArticulosService
+    ) {
  }
 
  get visibleColumns() {

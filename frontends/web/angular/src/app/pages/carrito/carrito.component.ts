@@ -11,6 +11,7 @@ import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
+import { CarritoService} from '../../services/carrito.service';
 
 
 @Component({
@@ -43,8 +44,10 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
- constructor(private router: Router,
-  private dialog: MatDialog) {
+ constructor
+ (private router: Router,
+  private dialog: MatDialog,
+  private carritoService: CarritoService) {
  }
 
  get visibleColumns() {
@@ -86,7 +89,7 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
  }
 
  pagar() {
-  console.log("Entro...pagar.");
+  console.log('Entro...pagar.');
     this.router.navigate(['/pagar']);
  }
 

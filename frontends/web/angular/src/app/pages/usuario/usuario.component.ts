@@ -10,6 +10,7 @@ import { User } from './user.model';
 import { ALL_USER_DEMO_DATA } from './all-user.demo';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
+import { UsuarioService} from '../../services/usuario.service';
 
 @Component({
     selector: 'fury-usuario',
@@ -41,7 +42,10 @@ export class UsuarioComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
   
-    constructor(private dialog: MatDialog) {
+    constructor(
+      private dialog: MatDialog,
+      private usuarioService: UsuarioService
+      ) {
     }
   
     get visibleColumns() {
