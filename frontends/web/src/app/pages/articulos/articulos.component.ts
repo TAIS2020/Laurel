@@ -12,6 +12,7 @@ import { filter } from 'rxjs/operators';
 import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fury-articulos',
@@ -34,6 +35,7 @@ export class ArticulosComponent  {/**
    { name: 'Stock', property: 'stock', visible: true, isModelProperty: true },
    { name: 'Description', property: 'description', visible: true, isModelProperty: true },
    { name: 'Price', property: 'price', visible: true, isModelProperty: true },
+   { name: 'Actions', property: 'actions', visible: true },
 
   ] as ListColumn[];
  pageSize = 10;
@@ -42,7 +44,8 @@ export class ArticulosComponent  {/**
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
- constructor(private dialog: MatDialog) {
+ constructor(private router: Router,
+  private dialog: MatDialog) {
  }
 
  get visibleColumns() {
@@ -84,16 +87,18 @@ export class ArticulosComponent  {/**
  }
 
  updateCustomer(customer) {
-   /*this.dialog.open(CustomerCreateUpdateComponent, {
-     data: customer
-   }).afterClosed().subscribe((customer) => {
-     if (customer) {
-       const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
-       this.customers[index] = new Item(customer);
-       this.subject$.next(this.customers);
-     }
-   });*/
- }
+  console.log("Entro....");
+    this.router.navigate(['/detalleArticulo']);
+  /*this.dialog.open(CustomerCreateUpdateComponent, {
+    data: customer
+  }).afterClosed().subscribe((customer) => {
+    if (customer) {
+      const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
+      this.customers[index] = new Item(customer);
+      this.subject$.next(this.customers);
+    }
+  });*/
+}
 
  deleteCustomer(customer) {
    this.customers.splice(this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id), 1);

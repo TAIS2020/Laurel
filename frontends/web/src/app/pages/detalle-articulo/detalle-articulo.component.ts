@@ -10,6 +10,7 @@ import { DetalleArticulo } from './detalle-articulo.model';
 import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fury-detalle-articulo',
@@ -42,7 +43,8 @@ export class DetalleArticuloComponent implements OnInit, AfterViewInit, OnDestro
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
- constructor(private dialog: MatDialog) {
+ constructor(private router: Router,
+  private dialog: MatDialog) {
  }
 
  get visibleColumns() {
@@ -83,16 +85,9 @@ export class DetalleArticuloComponent implements OnInit, AfterViewInit, OnDestro
    });*/
  }
 
- updateCustomer(customer) {
-   /*this.dialog.open(CustomerCreateUpdateComponent, {
-     data: customer
-   }).afterClosed().subscribe((customer) => {
-     if (customer) {
-       const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
-       this.customers[index] = new Item(customer);
-       this.subject$.next(this.customers);
-     }
-   });*/
+ agregarCarrito() {
+  console.log("Entro...agregarCarrito.");
+    this.router.navigate(['/carrito']);
  }
 
  deleteCustomer(customer) {
@@ -112,18 +107,4 @@ export class DetalleArticuloComponent implements OnInit, AfterViewInit, OnDestro
  ngOnDestroy() {
  }
 
-}
-
-function  openPage(pageName,elmnt,color) {
-  let i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
 }

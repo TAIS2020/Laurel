@@ -36,28 +36,27 @@
                 </ng-container>
 
 
-                <!-- actions Column -->
-                <ng-container matColumnDef="actions">
-                    <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
-                    <td *matCellDef="let row" class="actions-cell" mat-cell>
-                        <button type="button" mat-icon-button (click)="$event.stopPropagation()">
-              <mat-icon>more_horiz</mat-icon>
-            </button>
+                    <!-- actions Column -->
+                    <ng-container matColumnDef="actions">
+                        <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
+                        <td *matCellDef="let row" class="actions-cell" mat-cell>
+                        <button type="button" mat-icon-button [matMenuTriggerFor]="actionsMenu" (click)="$event.stopPropagation()">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+            
+                        <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
+                            <button (click)="updateCustomer(row)" mat-menu-item>
+                            <span>Ver Detalle</span>
+                            </button>
+                        </mat-menu>
+                        </td>
+                    </ng-container>
 
-                        <!--            <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">-->
-                        <!--              <button (click)="updateCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Editar</span>-->
-                        <!--              </button>-->
-                        <!--              <button (click)="deleteCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Eliminar</span>-->
-                        <!--              </button>-->
-                        <!--            </mat-menu>-->
-                    </td>
-                </ng-container>
-
-                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-                <tr *matRowDef="let row; columns: visibleColumns;" class="clickable route-animations-elements" mat-row></tr>
-            </table>
+                    <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: visibleColumns;"
+                        class="clickable route-animations-elements"
+                        mat-row></tr>
+                </table>
 
             <mat-paginator class="paginator" [pageSize]="pageSize"></mat-paginator>
 

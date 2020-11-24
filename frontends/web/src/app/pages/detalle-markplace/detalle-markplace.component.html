@@ -1,6 +1,6 @@
 <fury-page-layout mode="card">
 
-    <h1>Marktplace</h1>
+    <h1>Detalle Marketplace</h1>
     <div class="person">
         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="40px">
             <mat-form-field fxFlex>
@@ -42,12 +42,79 @@
         </div>
     </div>
 
-
-
-    <div class="btn-group">
-        <button>Agregar carrito</button>
-
+    <div fxLayout="column" fxLayoutGap="8px">
+        <button mat-raised-button color="primary" (click)="agregarCarrito()" >Agregar carrito</button>
     </div>
+
+    <div class="fury-preview-card" fxLayout="column" fxLayout.gt-sm="row">
+
+        <div class="content" fxFlex>
+            <div class="header">
+            <div class="title">CONOCE MÁS...</div>
+            <div class="tag"></div>
+            </div>
+        
+            <mat-tab-group class="tabs fury-tabs">
+            <mat-tab label="Reseña">
+                <p class="tab-content">
+                    Many things in life seem to hold us back. There are always errands to run, dishes to do, bills to pay, and it all gets in the way of what you really want to do: ride. Hop on the 26” Men’s Mongoose Status 2.2 mountain bike for a ride that won’t hold you back. Featuring a strong aluminum frame with hydroformed tubing and a powerful suspension fork to smooth out bumps, the Status 2.2 is ready for your next adventure. A 21-speed rear derailleur guarantees quick shifting and the right gearing for any trail you encounter. Light and strong alloy rims add durability and support knobby 2.125” wide mountain tires that roll over anything in your path. Classic front and rear V-brakes help you control your speed and stop on a dime. Don’t let life hold you back - get out and ride with the Status 2.2. Finally, a mountain bike that elevates your ride and won't break the bank along the way. There’s nothing you can’t do on a Mongoose.
+                <br>
+                <br><span class="semi-bold">About...</span>
+                <br><span class="semi-bold">Aluminum MTB frame with hydroformed tubing and a powerful front suspension fork is strong and reliable; 26-inch wheels fit riders 64 to 74 inches tall</span> 
+                <br><span class="semi-bold">21-speed shifters make for smooth gear changes on every ride</span>
+                <br><span class="semi-bold">Riser handlebar with colored end plugs completes the MTB look</span>
+                </p>
+            </mat-tab>
+            <mat-tab label="Puntuación">
+                <div class="preview-content" fxLayout="column" fxLayoutAlign="start " fxLayoutGap="24px">
+                    <mat-list class="list mat-elevation-z1 card">
+                      
+                      <mat-list-item>
+                        <h3 matLine>Elizabeth</h3>
+                        <img mat-list-avatar src="assets/img/avatars/1.png">
+                        <p matLine>
+                          <span class="subline">Buen Producto</span>
+                        </p>
+                      </mat-list-item>
+                      <mat-list-item>
+                        <h3 matLine>Marco</h3>
+                        <img mat-list-avatar src="assets/img/avatars/2.png">
+                        <p matLine>
+                          <span class="subline">Buena entrega</span>
+                        </p>
+                      </mat-list-item>
+                      <mat-list-item>
+                        <h3 matLine>Nancy</h3>
+                        <img mat-list-avatar src="assets/img/avatars/3.png">
+                        <p matLine>
+                          <span class="subline">Regular producto, llego defectuoso</span>
+                        </p>
+                      </mat-list-item>
+                      <mat-divider></mat-divider>
+                      <h3 mat-subheader>Other</h3>
+                      <mat-list-item>
+                        <h3 matLine>Frank</h3>
+                        <img mat-list-avatar src="assets/img/avatars/4.png">
+                        <p matLine>
+                          <span class="subline">Problemas</span>
+                        </p>
+                      </mat-list-item>
+                      <mat-list-item>
+                        <h3 matLine>Donald</h3>
+                        <img mat-list-avatar src="assets/img/avatars/1.png">
+                        <p matLine>
+                          <span class="subline">Excelente producto</span>
+                        </p>
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
+
+                
+            </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+    
 
 
 </fury-page-layout>

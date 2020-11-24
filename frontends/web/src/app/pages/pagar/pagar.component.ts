@@ -5,29 +5,27 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ALL_DETALLE_MARKPLACE_DEMO_DATA } from './all-detalle-markplace.demo';
-import { DetalleMarkplace } from './detalle-markplace.model';
 import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'fury-detalle-markplace',
-  templateUrl: 'detalle-markplace.component.html',
-  styleUrls: ['detalle-markplace.component.scss'],
-  animations: [fadeInRightAnimation, fadeInUpAnimation]
+	selector: 'fury-pagar',
+	templateUrl: './pagar.component.html',
+	styleUrls: ['./pagar.component.css'],
+	animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 
-export class DetalleMarkplaceComponent  {
+export class PagarComponent  {
 
- constructor(private router: Router,
-  private dialog: MatDialog) {
- }
-
- agregarCarrito() {
-  console.log("Entro...agregarCarrito.");
-    this.router.navigate(['/carrito']);
- }
-
+	constructor(private router: Router,
+	 private dialog: MatDialog) {
+	}
+   
+	agregarCarrito() {
+	 console.log("Entro...agregarCarrito.");
+	   this.router.navigate(['/carrito']);
+	}
 }
+   

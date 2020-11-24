@@ -40,7 +40,12 @@ const routes: Routes = [
       {
         path: 'detalleMarketplace',
         loadChildren: () => import('./pages/detalle-markplace/detalle-markplace.module').then(m => m.DetalleMarkplaceModule),
+      },
+      {
+        path: 'pagar',
+        loadChildren: () => import('./pages/pagar/pagar.module').then(m => m.PagarModule),
       }
+      
     ]
   }
 ];
