@@ -1,7 +1,6 @@
 const _ = require('lodash')
 
-const items = [
-    {
+const items = [{
         'id': 0,
         'name': 'Bicicleta GX',
         'price': 900.99,
@@ -34,7 +33,7 @@ const items = [
 ]
 
 const mockDao = {
-    findAll: async () => {
+    findAll: async() => {
         return items
     },
 }
