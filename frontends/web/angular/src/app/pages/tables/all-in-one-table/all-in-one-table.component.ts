@@ -12,6 +12,7 @@ import { Item } from './customer-create-update/item.model';
 import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
+import {MarketplaceService} from "../../../services/marketplace.service";
 
 @Component({
   selector: 'fury-all-in-one-table',
@@ -42,25 +43,19 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private router: Router,
-    private dialog: MatDialog) {
+  constructor(
+      private router: Router,
+      private dialog: MatDialog,
+      private marketPlaceService: MarketplaceService) {
   }
 
   get visibleColumns() {
     return this.columns.filter(column => column.visible).map(column => column.property);
   }
 
-  /**
-   * Example on how to get data and pass it to the table - usually you would want a dedicated service with a HTTP request for this
-   * We are simulating this request here.
-   */
-  getData() {
-    return of(ALL_IN_ONE_TABLE_DEMO_DATA.map(customer => new Item(customer)));
-  }
-
   ngOnInit() {
-    this.getData().subscribe(customers => {
-      this.subject$.next(customers);
+    this.marketPlaceService.findAll().subscribe((items: Item[])  => {
+      this.subject$.next(items);
     });
 
     this.dataSource = new MatTableDataSource();
@@ -117,7 +112,9 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   onFilterChange(value) {
+    console.log("Filtrando");
     if (!this.dataSource) {
+      console.log("No hay ds")
       return;
     }
     value = value.trim();

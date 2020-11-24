@@ -33,6 +33,6 @@ app.use(cookieParser());
 // Routes
 app.use('/login', [], authRouter);
 app.use('/admin', [identifyPlatform, verifyJWS], adminRouter);
-app.use('/api/v1', [identifyPlatform, verifyJWS], apiV1Router);
+app.use('/api/v1', [identifyPlatform], apiV1Router);
 
 module.exports = app;
