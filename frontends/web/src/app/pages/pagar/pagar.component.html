@@ -8,10 +8,89 @@
     
         <mat-tab-group class="tabs fury-tabs">
         <mat-tab label="PSE">
-           
+            <fury-page-layout-content [fxLayoutGap]="" fxLayout="column">
+                <div [fxLayoutGap]="" fxFlex="noshrink" fxLayout="column" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="start stretch">
+
+                    <fury-card [fxFlex.gt-sm]=""
+                        class="basic-forms route-animations-elements"
+                        [@fadeInUp]
+                        fxFlex="grow">
+
+                        <fury-card-header-heading>Diligencie la información correctamente</fury-card-header-heading>
+
+                        <fury-card-content fxLayout="column">
+                            <div class="result" fxLayout="column">
+                                <mat-form-field>
+                                    <input matInput placeholder="Nombre del Banco" type="text" required>
+                                </mat-form-field>
+                                
+                                <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="Nombres" type="text">
+                                    </mat-form-field>
+                                
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="Apellidos" type="text" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxLayout="column" fxLayoutGap="8px">
+                                    <button mat-raised-button color="primary" (click)="RealizarPagoPse()" >Realizar Pago</button>
+                                </div>
+                            </div>
+                        </fury-card-content>
+                    </fury-card>
+                </div>
+            </fury-page-layout-content>
         </mat-tab>
         <mat-tab label="TC">
-            
+
+            <fury-page-layout-content [fxLayoutGap]="" fxLayout="column">
+                <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="start stretch">
+
+                    <fury-card [fxFlex.gt-sm]=""
+                        class="basic-forms route-animations-elements"
+                        [@fadeInUp]
+                        fxFlex="grow">
+
+                        <fury-card-header-heading>Diligencie la información correctamente</fury-card-header-heading>
+
+                        <fury-card-content fxLayout="column">
+                            <div class="result" fxLayout="column">
+                                <mat-form-field>
+                                    <input matInput placeholder="Numero de Tarjeta" type="text" required>
+                                </mat-form-field>
+                                
+                                <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="Nombres" type="text">
+                                    </mat-form-field>
+                                
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="Apellidos" type="text" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="CVV" type="text">
+                                    </mat-form-field>
+                                
+                                    <mat-form-field fxFlex>
+                                    <input matInput placeholder="Numero Cuotas" type="text" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxLayout="column" fxLayoutGap="8px">
+                                    <button mat-raised-button color="primary" (click)="RealizarPagoTC()" >Realizar Pago</button>
+                                </div>
+                            </div>
+                        </fury-card-content>
+                    </fury-card>
+                </div>
+            </fury-page-layout-content>
         </mat-tab>
         </mat-tab-group>
     </div>
