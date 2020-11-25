@@ -29,22 +29,22 @@
                     </ng-container>
                 </ng-container>
 
+
+
+
                 <!-- actions Column -->
                 <ng-container matColumnDef="actions">
                     <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
                     <td *matCellDef="let row" class="actions-cell" mat-cell>
-                        <button type="button" mat-icon-button (click)="$event.stopPropagation()">
-              <mat-icon>more_horiz</mat-icon>
-            </button>
+                        <button type="button" mat-icon-button [matMenuTriggerFor]="actionsMenu" (click)="$event.stopPropagation()">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
 
-                        <!--            <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">-->
-                        <!--              <button (click)="updateCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Editar</span>-->
-                        <!--              </button>-->
-                        <!--              <button (click)="deleteCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Eliminar</span>-->
-                        <!--              </button>-->
-                        <!--            </mat-menu>-->
+                        <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
+                            <button (click)="updateCustomer(row)" mat-menu-item>
+                        <span>Ver</span>
+                        </button>
+                        </mat-menu>
                     </td>
                 </ng-container>
 

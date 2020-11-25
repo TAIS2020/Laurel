@@ -1,32 +1,24 @@
 <fury-page-layout mode="card">
-    <div class="preview-content" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px">
+
+    <div class="preview-content" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="100%">
+
         <mat-card>
             <mat-card-header>
                 <img mat-card-avatar src="https://fury.visurel.com/assets/img/avatars/default.jpg">
                 <mat-card-subtitle>
                     Marco Guzman
                 </mat-card-subtitle>
-                <mat-card-title>Subtotal (4 Articulos) - US$ 3007.85</mat-card-title>
+                <h1>Envios</h1>
+
             </mat-card-header>
 
-            <mat-card-content>
-                <p>Algunos clientes de Laurel nos han permitido compartir sus direcciones de envío con vendedores externos para que todos los pedidos de sus Listas de Deseos puedan ser enviados. Si estás comprando un artículo de terceros de la Lista de Deseosde
-                    un cliente que no nos ha dado este permiso, puede que tengas que proporcionarnos su dirección de envío. </p>
-            </mat-card-content>
             <mat-divider></mat-divider>
-            <mat-card-actions>
-                <div fxLayout="row">
-                    <button mat-raised-button color="primary" (click)="pagar()">Proceder al pago</button>
-                </div>
-            </mat-card-actions>
+
         </mat-card>
     </div>
-</fury-page-layout>
-
-<fury-page-layout mode="card">
 
     <fury-page-layout-content [@fadeInUp]>
-        <fury-list name="Carrito" [columns]="columns" (filterChange)="onFilterChange($event)">
+        <fury-list name="Envios" [columns]="columns" (filterChange)="onFilterChange($event)">
 
             <table [dataSource]="dataSource" mat-table matSort>
 
@@ -43,12 +35,7 @@
                     </td>
                 </ng-container>
 
-                <ng-container matColumnDef="image">
-                    <th *matHeaderCellDef class="image-cell" mat-header-cell></th>
-                    <td *matCellDef="let row" class="image-cell" mat-cell>
-                        <img src="assets/img/marketplace/bicicleta-{{ row.id }}.png">
-                    </td>
-                </ng-container>
+
 
                 <!-- fullName Column -->
                 <ng-container *ngFor="let column of columns">
@@ -65,18 +52,11 @@
                 <ng-container matColumnDef="actions">
                     <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
                     <td *matCellDef="let row" class="actions-cell" mat-cell>
-                        <button type="button" mat-icon-button (click)="$event.stopPropagation()">
-              <mat-icon>more_horiz</mat-icon>
-            </button>
+                        <button type="button" mat-icon-button [matMenuTriggerFor]="actionsMenu" (click)="$event.stopPropagation()">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
 
-                        <!--            <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">-->
-                        <!--              <button (click)="updateCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Editar</span>-->
-                        <!--              </button>-->
-                        <!--              <button (click)="deleteCustomer(row)" mat-menu-item>-->
-                        <!--                <span>Eliminar</span>-->
-                        <!--              </button>-->
-                        <!--            </mat-menu>-->
+
                     </td>
                 </ng-container>
 

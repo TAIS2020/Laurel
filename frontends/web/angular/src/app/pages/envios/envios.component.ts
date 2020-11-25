@@ -10,45 +10,49 @@ import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.an
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
 
-import { ALL_CARRITO_DEMO_DATA } from './all-carrito.demo';
-import { Carrito } from './carrito.model';
-import { CarritoService} from '../../services/carrito.service';
+import { ALL_ENVIOS_DEMO_DATA } from './all-envios.demo';
+import { Envios } from './envios.model';
+
 
 
 @Component({
-  selector: 'fury-carrito',
-  templateUrl: 'carrito.component.html',
-  styleUrls: ['carrito.component.scss'],
+  selector: 'fury-envios',
+  templateUrl: 'envios.component.html',
+  styleUrls: ['envios.component.scss'],
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 
-export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
+export class EnviosComponent implements OnInit, AfterViewInit, OnDestroy  {/**
   * Simulating a service with HTTP that returns Observables
   * You probably want to remove this and do all requests in a service with HTTP
   */
- subject$: ReplaySubject<Carrito[]> = new ReplaySubject<Carrito[]>(1);
- data$: Observable<Carrito[]> = this.subject$.asObservable();
- customers: Carrito[];
+ subject$: ReplaySubject<Envios[]> = new ReplaySubject<Envios[]>(1);
+ data$: Observable<Envios[]> = this.subject$.asObservable();
+ customers: Envios[];
 
  @Input()
  columns: ListColumn[] = [
-  { name: 'Image', property: 'image', visible: true },
-   { name: 'Name', property: 'name', visible: true, isModelProperty: true },
-   { name: 'Quantity', property: 'quantity', visible: true, isModelProperty: true },
-   { name: 'Price', property: 'price', visible: true, isModelProperty: true },
-   { name: 'Actions', property: 'actions', visible: false },
+
+   { name: 'GUIDE', property: 'guide', visible: true, isModelProperty: true },
+   { name: 'DATE', property: 'date', visible: true, isModelProperty: true },
+   { name: 'ADDRESS', property: 'address', visible: true, isModelProperty: true },
+   { name: 'CITY', property: 'city', visible: true, isModelProperty: true },
+   { name: 'INVOICE', property: 'invoice', visible: true, isModelProperty: true },
+   { name: 'COST', property: 'cost', visible: true, isModelProperty: true },
+   { name: 'STATE', property: 'state', visible: true, isModelProperty: true },
+   { name: 'Actions', property: 'actions', visible: true },
 
   ] as ListColumn[];
  pageSize = 10;
- dataSource: MatTableDataSource<Carrito> | null;
+ dataSource: MatTableDataSource<Envios> | null;
 
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
- constructor
- (private router: Router,
-  private dialog: MatDialog,
-  private carritoService: CarritoService) {
+ constructor(
+    private router: Router,
+    private dialog: MatDialog
+    ) {
  }
 
  get visibleColumns() {
@@ -57,7 +61,7 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
 
 
  getData() {
-   return of(ALL_CARRITO_DEMO_DATA.map(customer => new Carrito(customer)));
+   return of(ALL_ENVIOS_DEMO_DATA.map(customer => new Envios(customer)));
  }
 
  ngOnInit() {
@@ -89,15 +93,19 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
    });*/
  }
 
- pagar() {
-  console.log('Entro...pagar.');
-    this.router.navigate(['/pagar']);
- }
-
- deleteCustomer(customer) {
-   this.customers.splice(this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id), 1);
-   this.subject$.next(this.customers);
- }
+ updateCustomer(customer) {
+  console.log('Entro....');
+    this.router.navigate(['/detalleArticulo']);
+  /*this.dialog.open(CustomerCreateUpdateComponent, {
+    data: customer
+  }).afterClosed().subscribe((customer) => {
+    if (customer) {
+      const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id);
+      this.customers[index] = new Item(customer);
+      this.subject$.next(this.customers);
+    }
+  });*/
+}
 
  onFilterChange(value) {
    if (!this.dataSource) {
@@ -113,3 +121,4 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
 
 
 }
+

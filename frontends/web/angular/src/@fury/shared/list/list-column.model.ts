@@ -11,5 +11,16 @@ export class ListColumn {
   price?: any;
   description?: any;
   stock?: any;
+  reference?: any;
+  date?: any;
+  nInvoice?: any;
+  totalValue?: any;
+
+  guide?: any;
+  address?: any;
+  city?: any;
+  invoice?: any;
+  cost?: any;
+  state?: any;
   }
 

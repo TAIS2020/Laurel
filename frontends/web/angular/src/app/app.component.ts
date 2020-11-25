@@ -64,7 +64,7 @@ export class AppComponent {
       {
         name: 'Carrito',
         routeOrFunction: '/carrito',
-        icon: 'assignment',
+        icon: 'add_shopping_cart',
         badgeColor: '#2196F3',
         position: 15,
       },
@@ -72,6 +72,20 @@ export class AppComponent {
         name: 'Articulos',
         routeOrFunction: '/articulos',
         icon: 'assignment',
+        badgeColor: '#2196F3',
+        position: 15,
+      },
+      {
+        name: 'Historial De Pagos',
+        routeOrFunction: '/historialDePagos',
+        icon: 'description',
+        badgeColor: '#2196F3',
+        position: 15,
+      },
+      {
+        name: 'Envios',
+        routeOrFunction: '/envios',
+        icon: 'local_shipping',
         badgeColor: '#2196F3',
         position: 15,
       }

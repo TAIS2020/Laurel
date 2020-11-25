@@ -44,8 +44,17 @@ const routes: Routes = [
       {
         path: 'pagar',
         loadChildren: () => import('./pages/pagar/pagar.module').then(m => m.PagarModule),
+      },
+      {
+        path: 'historialDePagos',
+        loadChildren: () => import('./pages/historial-de-pagos/historial-de-pagos.module').then(m => m.HistorialDePagosModule),
+      },
+      {
+        path: 'envios',
+        loadChildren: () => import('./pages/envios/envios.module').then(m => m.EnviosModule),
       }
-      
+
+
     ]
   }
 ];
