@@ -1,21 +1,6 @@
 <fury-page-layout mode="card">
 
-    <div class="preview-content" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="100%">
 
-        <mat-card>
-            <mat-card-header>
-                <img mat-card-avatar src="https://fury.visurel.com/assets/img/avatars/default.jpg">
-                <mat-card-subtitle>
-                    Marco Guzman
-                </mat-card-subtitle>
-                <h1>Envios</h1>
-
-            </mat-card-header>
-
-            <mat-divider></mat-divider>
-
-        </mat-card>
-    </div>
 
     <fury-page-layout-content [@fadeInUp]>
         <fury-list name="Envios" [columns]="columns" (filterChange)="onFilterChange($event)">
@@ -49,6 +34,7 @@
 
 
                 <!-- actions Column -->
+                <!---->
                 <ng-container matColumnDef="actions">
                     <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
                     <td *matCellDef="let row" class="actions-cell" mat-cell>

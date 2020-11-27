@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { ALL_ENVIOS_DEMO_DATA } from './all-envios.demo';
 import { Envios } from './envios.model';
+import { EnviosService} from '../../services/envios.service';
 
 
 
@@ -51,7 +52,8 @@ export class EnviosComponent implements OnInit, AfterViewInit, OnDestroy  {/**
 
  constructor(
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private enviosService: EnviosService
     ) {
  }
 
@@ -65,10 +67,13 @@ export class EnviosComponent implements OnInit, AfterViewInit, OnDestroy  {/**
  }
 
  ngOnInit() {
-   this.getData().subscribe(customers => {
-     this.subject$.next(customers);
+
+  this.enviosService.findAll().subscribe((items: Envios[])  => {
+    this.subject$.next(items);
    });
 
+   // tslint:disable-next-line: no-debugger
+   debugger;
    this.dataSource = new MatTableDataSource();
 
    this.data$.pipe(

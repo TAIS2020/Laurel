@@ -6,7 +6,7 @@ import {Item} from '../pages/tables/all-in-one-table/customer-create-update/item
 @Injectable({
   providedIn: 'root'
 })
-export class CarritoService {
+export class EnviosService {
 
   constructor(
     private http: HttpClient,
@@ -14,7 +14,7 @@ export class CarritoService {
   findAll() {
     const headers = new HttpHeaders().set('Type-content', 'application/json')
 
-    return this.http.get(`${environment.backend}/api/v1/carrito`, {
+    return this.http.get(`${environment.backend}/api/v1/envios`, {
       headers
     })
   }

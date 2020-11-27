@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { ALL_HISTORIAL_DE_PAGOS_DEMO_DATA } from './all-historial-de-pagos.demo';
 import { HistorialDePagos } from './historial-de-pagos.model';
+import { HistorialDePagosService} from '../../services/historial-de-pagos.service';
 
 
 
@@ -48,10 +49,11 @@ export class HistorialDePagosComponent implements OnInit, AfterViewInit, OnDestr
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
+ 
  constructor(
     private router: Router,
-    private dialog: MatDialog
-    ) {
+    private dialog: MatDialog,
+    private historialDePagosService: HistorialDePagosService) {
  }
 
  get visibleColumns() {
