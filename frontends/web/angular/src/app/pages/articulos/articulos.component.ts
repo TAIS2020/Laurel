@@ -61,10 +61,14 @@ export class ArticulosComponent  {/**
    return of(ALL_ARTICULO_DEMO_DATA.map(customer => new Articulo(customer)));
  }
 
+ // tslint:disable-next-line: use-life-cycle-interface
  ngOnInit() {
-   this.getData().subscribe(customers => {
-     this.subject$.next(customers);
+  this.articulosService.findAll().subscribe((items: Articulo[])  => {
+    this.subject$.next(items);
    });
+
+   // tslint:disable-next-line: no-debugger
+   debugger;
 
    this.dataSource = new MatTableDataSource();
 
@@ -76,6 +80,7 @@ export class ArticulosComponent  {/**
    });
  }
 
+ // tslint:disable-next-line: use-life-cycle-interface
  ngAfterViewInit() {
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
@@ -91,7 +96,7 @@ export class ArticulosComponent  {/**
  }
 
  updateCustomer(customer) {
-  console.log("Entro....");
+  console.log('Entro....');
     this.router.navigate(['/detalleArticulo']);
   /*this.dialog.open(CustomerCreateUpdateComponent, {
     data: customer
@@ -118,6 +123,7 @@ export class ArticulosComponent  {/**
    this.dataSource.filter = value;
  }
 
+ // tslint:disable-next-line: use-life-cycle-interface
  ngOnDestroy() {
  }
 

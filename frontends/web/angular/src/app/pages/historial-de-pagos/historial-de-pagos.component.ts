@@ -66,10 +66,15 @@ export class HistorialDePagosComponent implements OnInit, AfterViewInit, OnDestr
  }
 
  ngOnInit() {
-   this.getData().subscribe(customers => {
-     this.subject$.next(customers);
-   });
 
+  this.historialDePagosService.findAll().subscribe((items: HistorialDePagos[])  => {
+    this.subject$.next(items);
+  });
+
+  // tslint:disable-next-line: no-debugger
+  debugger;
+
+   
    this.dataSource = new MatTableDataSource();
 
    this.data$.pipe(

@@ -74,6 +74,7 @@ export class EnviosComponent implements OnInit, AfterViewInit, OnDestroy  {/**
 
    // tslint:disable-next-line: no-debugger
    debugger;
+   
    this.dataSource = new MatTableDataSource();
 
    this.data$.pipe(

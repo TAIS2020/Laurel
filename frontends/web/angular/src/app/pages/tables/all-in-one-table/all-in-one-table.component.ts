@@ -12,7 +12,7 @@ import { Item } from './customer-create-update/item.model';
 import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
 import { Router } from '@angular/router';
-import {MarketplaceService} from "../../../services/marketplace.service";
+import {MarketplaceService} from '../../../services/marketplace.service';
 
 @Component({
   selector: 'fury-all-in-one-table',
@@ -52,11 +52,17 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   get visibleColumns() {
     return this.columns.filter(column => column.visible).map(column => column.property);
   }
+  getData() {
+    return of(ALL_IN_ONE_TABLE_DEMO_DATA.map(customer => new Item(customer)));
+  }
 
   ngOnInit() {
+
     this.marketPlaceService.findAll().subscribe((items: Item[])  => {
       this.subject$.next(items);
-    });
+     });
+     // tslint:disable-next-line: no-debugger
+     debugger;
 
     this.dataSource = new MatTableDataSource();
 
@@ -89,7 +95,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
   updateCustomer(customer) {
-    console.log("Entro....");
+    console.log('Entro....');
       this.router.navigate(['/detalleMarketplace']);
     /*this.dialog.open(CustomerCreateUpdateComponent, {
       data: customer
@@ -112,11 +118,11 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   onFilterChange(value) {
-    console.log("Filtrando");
+    console.log('Filtrando');
     if (!this.dataSource) {
-      console.log("No hay ds")
+      console.log('No hay ds');
       return;
-    }
+}
     value = value.trim();
     value = value.toLowerCase();
     this.dataSource.filter = value;

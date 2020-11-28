@@ -58,19 +58,24 @@ export class UsuarioComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   
     ngOnInit() {
-      this.getData().subscribe(customers => {
-        this.subject$.next(customers);
-      });
-  
-      this.dataSource = new MatTableDataSource();
-  
-      this.data$.pipe(
-        filter(data => !!data)
-      ).subscribe((customers) => {
-        this.customers = customers;
-        this.dataSource.data = customers;
-      });
-    }
+
+      this.usuarioService.findAll().subscribe((items: User[])  => {
+        this.subject$.next(items);
+       });
+    
+       // tslint:disable-next-line: no-debugger
+       debugger;
+       
+       this.dataSource = new MatTableDataSource();
+    
+       this.data$.pipe(
+         filter(data => !!data)
+       ).subscribe((customers) => {
+         this.customers = customers;
+         this.dataSource.data = customers;
+       });
+     }
+    
   
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
