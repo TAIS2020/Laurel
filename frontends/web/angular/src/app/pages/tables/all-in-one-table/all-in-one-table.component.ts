@@ -61,8 +61,6 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
     this.marketPlaceService.findAll().subscribe((items: Item[])  => {
       this.subject$.next(items);
      });
-     // tslint:disable-next-line: no-debugger
-     debugger;
 
     this.dataSource = new MatTableDataSource();
 

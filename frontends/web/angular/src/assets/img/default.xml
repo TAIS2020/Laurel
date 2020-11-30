@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="Laurel"/>
+	<feature automatic="selected" name="Usuarios"/>
+	<feature automatic="selected" name="Login"/>
+	<feature automatic="selected" name="Admon_usuarios"/>
+	<feature automatic="selected" name="Carrito_compras"/>
+	<feature automatic="selected" manual="selected" name="Pagos"/>
+	<feature automatic="selected" name="Historial_pagos"/>
+	<feature automatic="selected" manual="selected" name="Pasarela_pagos"/>
+	<feature manual="selected" name="PSE"/>
+	<feature name="TC"/>
+	<feature automatic="selected" name="Marketplace"/>
+	<feature manual="selected" name="Admon_productos"/>
+	<feature automatic="selected" manual="selected" name="Envios"/>
+	<feature automatic="selected" name="Notificador_envios"/>
+	<feature manual="selected" name="Mail"/>
+	<feature manual="selected" name="IN_App"/>
+	<feature name="Scoring"/>
+	<feature name="Resena"/>
+	<feature name="Puntuacion"/>
+</configuration>

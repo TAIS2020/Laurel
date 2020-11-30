@@ -60,8 +60,7 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
   this.carritoService.findAll().subscribe((items: Carrito[])  => {
     this.subject$.next(items);
   });
-  // tslint:disable-next-line: no-debugger
-  debugger;
+  
    this.dataSource = new MatTableDataSource();
 
    this.data$.pipe(

@@ -63,8 +63,6 @@ export class UsuarioComponent implements OnInit, AfterViewInit, OnDestroy {
         this.subject$.next(items);
        });
     
-       // tslint:disable-next-line: no-debugger
-       debugger;
        
        this.dataSource = new MatTableDataSource();
     

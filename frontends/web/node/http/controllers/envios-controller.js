@@ -6,7 +6,7 @@ const envioscontroller = {
     },
     findById: async(req, res, next) => {
         res.json(await enviosService.findById(req.params.id))
-    },
+    }
 }
 
 

@@ -44,15 +44,16 @@ export class AppComponent {
         name: 'MENÚS',
         position: 5,
         type: 'subheading',
-        customClass: 'first-subheading'
+        customClass: 'first-subheading',
+        item : "Laurel"
       },
-
       {
         name: 'Marketplace',
         routeOrFunction: '/marketplace',
         icon: 'assignment',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Marketplace"
       },
       {
         name: 'Usuario',
@@ -60,6 +61,7 @@ export class AppComponent {
         icon: 'perm_identity',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Usuarios"
       },
       {
         name: 'Carrito',
@@ -67,6 +69,7 @@ export class AppComponent {
         icon: 'add_shopping_cart',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Carrito_compras"
       },
       {
         name: 'Articulos',
@@ -74,6 +77,7 @@ export class AppComponent {
         icon: 'assignment',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Admon_productos"
       },
       {
         name: 'Historial De Pagos',
@@ -81,6 +85,7 @@ export class AppComponent {
         icon: 'description',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Historial_pagos"
       },
       {
         name: 'Envios',
@@ -88,6 +93,7 @@ export class AppComponent {
         icon: 'local_shipping',
         badgeColor: '#2196F3',
         position: 15,
+        item : "Notificador_envios"
       }
 
 

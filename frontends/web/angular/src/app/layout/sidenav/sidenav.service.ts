@@ -11,6 +11,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { componentDestroyed } from '../../../@fury/shared/component-destroyed';
 import { MediaObserver } from '@angular/flex-layout';
 
+
 @Injectable()
 export class SidenavService implements OnDestroy {
 
@@ -61,7 +62,8 @@ export class SidenavService implements OnDestroy {
   expanded$ = this._expandedSubject.asObservable();
 
   constructor(private router: Router,
-              private mediaObserver: MediaObserver) {
+              private mediaObserver: MediaObserver
+              ) {
     this.router.events.pipe(
       filter<NavigationEnd>(event => event instanceof NavigationEnd),
       takeUntil(componentDestroyed(this))
@@ -113,7 +115,26 @@ export class SidenavService implements OnDestroy {
     this._expandedSubject.next(!this._expandedSubject.getValue());
   }
 
-  addItems(items: SidenavItem[]) {
+  addItems(items: SidenavItem[]) {  
+    debugger;
+    var permisos = localStorage.getItem("Permisos");
+    permisos = JSON.parse(permisos);
+
+    var length = permisos.length;
+    var itemsLe = items.length, arr = [];  
+
+    for (var i=0; i < length; i++) {  
+      for (var j=0; j < itemsLe; j++) {
+        var val = (items[j].item != undefined) ? items[j].item : "";
+        if(permisos[i].item ==  val ){
+          if(permisos[i].activo==true){
+            arr.push(items[j]);
+          }
+        }
+      }
+    }
+    items = arr;
+
     items.forEach(item => this.addItem(item));
   }
 

@@ -1,5 +1,4 @@
-const _ = require('lodash')
-
+const _ = require('lodash');
 
 const items = [{
         'id': 1,
@@ -52,8 +51,7 @@ const mockDao = {
     },
     findById: async(id) => {
         return _.filter(items, item => item.id === id)
-    },
-
+    }
 }
 
 module.exports = mockDao

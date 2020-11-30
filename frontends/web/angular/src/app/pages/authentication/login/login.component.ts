@@ -4,6 +4,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
 import {AuthService} from "../../../services/auth.service";
+import * as xml2js from 'xml2js';
+import { HttpClient, HttpHeaders } from '@angular/common/http';  
+
 
 @Component({
   selector: 'fury-login',
@@ -12,7 +15,8 @@ import {AuthService} from "../../../services/auth.service";
   animations: [fadeInUpAnimation]
 })
 export class LoginComponent implements OnInit {
-
+  
+  public xmlItems: any;  
   form: FormGroup;
 
   inputType = 'password';
@@ -23,8 +27,44 @@ export class LoginComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private authService: AuthService,
+              private _http: HttpClient
   ) {
+    this.loadXML();
   }
+
+  loadXML() {  
+
+    this._http.get('../assets/img/default.xml',  
+    {  
+      headers: new HttpHeaders()  
+        .set('Content-Type', 'text/xml')  
+        .append('Access-Control-Allow-Methods', 'GET')  
+        .append('Access-Control-Allow-Origin', '*')  
+        .append('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method"),  
+      responseType: 'text'  
+    })  
+    .subscribe((data) => {  
+        var parser = new xml2js.Parser();
+        var k: string | number,  
+        arr = [];
+
+        parser.parseString(data, function (err, result) {
+          for (k in result.configuration.feature) {
+            var item = result.configuration.feature[k].$;
+            var valor = (item.automatic!= undefined && item.automatic!= null )? true : ( (item.manual!= undefined && item.manual!= null)? true :false  );
+          
+            arr.push({  
+              item: item.name,  
+              activo: valor 
+            });  
+          }
+          //console.log(JSON.stringify(arr));
+          localStorage.setItem("Permisos", JSON.stringify(arr));
+         });
+    });  
+
+
+  }  
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -34,6 +74,7 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
+
     this.authService.SignIn(
         this.form.controls["email"].value,
         this.form.controls["password"].value

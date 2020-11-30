@@ -71,10 +71,7 @@ export class EnviosComponent implements OnInit, AfterViewInit, OnDestroy  {/**
   this.enviosService.findAll().subscribe((items: Envios[])  => {
     this.subject$.next(items);
    });
-
-   // tslint:disable-next-line: no-debugger
-   debugger;
-   
+  
    this.dataSource = new MatTableDataSource();
 
    this.data$.pipe(
