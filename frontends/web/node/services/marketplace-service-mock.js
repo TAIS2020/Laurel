@@ -4,7 +4,8 @@ const items = [{
         'id': '0',
         'name': 'Bicicleta GX',
         'price': 900.99,
-        'description': 'Descripcion bicicleta'
+        'description': 'Descripcion bicicleta',
+        'category': 'sports'
     },
     {
         'id': '1',
