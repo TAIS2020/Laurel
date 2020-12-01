@@ -118,22 +118,24 @@ export class SidenavService implements OnDestroy {
   addItems(items: SidenavItem[]) {  
     debugger;
     var permisos = localStorage.getItem("Permisos");
-    permisos = JSON.parse(permisos);
-
-    var length = permisos.length;
-    var itemsLe = items.length, arr = [];  
-
-    for (var i=0; i < length; i++) {  
-      for (var j=0; j < itemsLe; j++) {
-        var val = (items[j].item != undefined) ? items[j].item : "";
-        if(permisos[i].item ==  val ){
-          if(permisos[i].activo==true){
-            arr.push(items[j]);
+    if(permisos!= null){
+      var permisoJson = JSON.parse(permisos);
+      var length = permisoJson.length;
+      var itemsLe = items.length, arr = [];  
+  
+      for (var i=0; i < length; i++) {  
+        for (var j=0; j < itemsLe; j++) {
+          var val = (items[j].item != undefined) ? items[j].item : "";
+          if(permisoJson[i].item ==  val ){
+            if(permisoJson[i].activo == true){
+              arr.push(items[j]);
+            }
           }
         }
       }
+      items = arr;
     }
-    items = arr;
+    
 
     items.forEach(item => this.addItem(item));
   }
