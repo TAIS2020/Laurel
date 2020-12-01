@@ -6,6 +6,9 @@ const controller = {
     },
     findById: async(req, res, next) => {
         res.json(await marketplaceService.findById(req.params.id))
+    },    
+    getXml: async(req, res, next) => {
+        res.json(await marketplaceService.getXml())
     },
 }
 

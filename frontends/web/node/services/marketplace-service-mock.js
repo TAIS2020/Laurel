@@ -1,4 +1,7 @@
 const _ = require('lodash')
+var xml2js = require('xml2js');
+var fs = require('fs');
+
 
 const items = [{
         'id': '0',
@@ -39,6 +42,28 @@ const mockDao = {
     },
     findById: async(id) => {
         return _.filter(Item, item => item.id === id)
+    },
+    getXml: async() => {
+        var parser = new xml2js.Parser();
+        var extractedData = "", arr = [];
+        var archivoXml = __dirname + '/../config/default.xml';
+
+        let archivo = fs.readFileSync(archivoXml, 'utf-8');
+        
+        let procesamiento = parser.parseStringPromise(archivo).then(function (result) {
+            for (k in result.configuration.feature) {
+                var item = result.configuration.feature[k].$;
+                var valor = (item.automatic!= undefined && item.automatic!= null )? true : ( (item.manual!= undefined && item.manual!= null)? true :false  );
+
+                if(valor){
+                    arr.push(item.name);  
+                }
+            }
+            //console.log(JSON.stringify(arr.sort()))
+            return arr.sort().toString();       
+        });
+
+        return procesamiento;               
     },
 }
 

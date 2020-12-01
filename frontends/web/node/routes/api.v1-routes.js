@@ -31,5 +31,6 @@ router.get('/historialDePagos/:id?', historialdepagoscontroller.findById)
 router.get('/envios', envioscontroller.findAll)
 router.get('/envios/:id?', envioscontroller.findById)
 
+router.get('/getXml', marketplaceController.getXml)
 
 module.exports = router;

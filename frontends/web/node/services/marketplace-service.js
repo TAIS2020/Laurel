@@ -3,4 +3,5 @@ const mockDao = require('./marketplace-service-mock')
 
 //TODO... implementation
 
-module.exports = mockDao
+module.exports = mockDao;
+
