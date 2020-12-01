@@ -127,9 +127,9 @@ export class SidenavService implements OnDestroy {
         for (var j=0; j < itemsLe; j++) {
           var val = (items[j].item != undefined) ? items[j].item : "";
           if(permisoJson[i].item ==  val ){
-            if(permisoJson[i].activo == true){
+            //if(permisoJson[i].activo == true){
               arr.push(items[j]);
-            }
+            //}
           }
         }
       }

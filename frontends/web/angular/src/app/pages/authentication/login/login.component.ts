@@ -53,10 +53,11 @@ export class LoginComponent implements OnInit {
             var item = result.configuration.feature[k].$;
             var valor = (item.automatic!= undefined && item.automatic!= null )? true : ( (item.manual!= undefined && item.manual!= null)? true :false  );
           
-            arr.push({  
-              item: item.name,  
-              activo: valor 
-            });  
+            if(valor){
+              arr.push({  
+                item: item.name
+              }); 
+            }            
           }
           //console.log(JSON.stringify(arr));
           localStorage.setItem("Permisos", JSON.stringify(arr));
