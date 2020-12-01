@@ -8,6 +8,7 @@ public interface ItemsService {
 
     Item getItem(Long id);
     List<Item> getItems(String searchTerms);
+    List<Item> getAllItems();
     Item updateItem(Item item);
     Item createItem(Item item);
     boolean deleteItem(Long id);

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Objects;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/items")
 @Validated
@@ -21,10 +21,18 @@ public class ItemsController {
     @Autowired
     private ItemsService itemsService;
 
+    /*
     @GetMapping
     public ResponseEntity<Items> getItems(@RequestParam String q) {
         Items items = new Items();
         items.setItems(itemsService.getItems(q));
+        return ResponseEntity.ok(items);
+    }*/
+
+    @GetMapping
+    public ResponseEntity<Items> getAllItems() {
+        Items items = new Items();
+        items.setItems(itemsService.getAllItems());
         return ResponseEntity.ok(items);
     }
 

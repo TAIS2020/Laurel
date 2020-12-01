@@ -28,6 +28,11 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
+    public List<Item> getAllItems() {
+        return repository.findAll();
+    }
+
+    @Override
     public Item updateItem(Item item) {
         Item itemFound = findItem(item.getId());
         if (itemFound == null) return null;
