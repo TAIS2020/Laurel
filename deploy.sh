@@ -9,6 +9,8 @@ printf "[4] scoring\n"
 printf "[5] shipping\n"
 printf "[6] shopping-cart\n"
 printf "[7] users\n"
+printf "[8] gateway with front\n"
+printf "[9] gateway only\n"
 read SERVICE_NAME
 
 case $SERVICE_NAME in
@@ -88,6 +90,26 @@ case $SERVICE_NAME in
     cd ../../kube
     kubectl delete -f users.yaml
     kubectl apply -f users.yaml
+    ;;
+  "8")
+    cd frontends/web/angular
+    ng build --prod
+    cd ..
+    docker build -t laurel-gateway .
+    docker tag laurel-gateway morozco/laurel-gateway
+    docker push morozco/laurel-gateway
+    cd ../../kube
+    kubectl delete -f gateway.yaml
+    kubectl apply -f gateway.yaml
+    ;;
+  "9")
+    cd frontends/web
+    docker build -t laurel-gateway .
+    docker tag laurel-gateway morozco/laurel-gateway
+    docker push morozco/laurel-gateway
+    cd ../../kube
+    kubectl delete -f gateway.yaml
+    kubectl apply -f gateway.yaml
     ;;
   *)
     echo -n "ERROR:: invalid service name."
