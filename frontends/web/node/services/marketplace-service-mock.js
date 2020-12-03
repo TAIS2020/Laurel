@@ -42,7 +42,7 @@ const items = [{
 
 const mockDao = {
     findAll: async() => {
-        return items
+        return {items}
     },
     findById: async(id) => {
         return _.filter(Item, item => item.id === id)
@@ -53,21 +53,21 @@ const mockDao = {
         var archivoXml = __dirname + '/../config/default.xml';
 
         let archivo = fs.readFileSync(archivoXml, 'utf-8');
-        
+
         let procesamiento = parser.parseStringPromise(archivo).then(function (result) {
             for (k in result.configuration.feature) {
                 var item = result.configuration.feature[k].$;
                 var valor = (item.automatic!= undefined && item.automatic!= null )? true : ( (item.manual!= undefined && item.manual!= null)? true :false  );
 
                 if(valor){
-                    arr.push(item.name);  
+                    arr.push(item.name);
                 }
             }
             //console.log(JSON.stringify(arr.sort()))
-            return arr.sort().toString();       
+            return arr.sort().toString();
         });
 
-        return procesamiento;               
+        return procesamiento;
     },
 }
 
