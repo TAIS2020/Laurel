@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   googleMapsApiKey: '',
   backend: 'http://localhost:3000', // Put your backend here
+  backend_google: 'http://35.188.114.57:8080',
   firebase: {
     apiKey: "AIzaSyDfe4eQGO_fcz8LxWK-ZJEVx-meWcr0CGc",
     authDomain: "laurel-8bccd.firebaseapp.com",

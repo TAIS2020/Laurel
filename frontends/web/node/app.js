@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const path = require('path');
 
 // CORS
 const cors = require('cors')
@@ -34,5 +35,13 @@ app.use(cookieParser());
 app.use('/login', [], authRouter);
 app.use('/admin', [identifyPlatform, verifyJWS], adminRouter);
 app.use('/api/v1', [identifyPlatform], apiV1Router);
+
+// Serve angular app
+const staticFile = path.join(__dirname, 'public', 'dist')
+app.use(express.static(staticFile));
+
+app.get('/*', (req, res) => {
+    res.sendFile(staticFile + '/index.html')
+});
 
 module.exports = app;
