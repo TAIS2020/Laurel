@@ -57,7 +57,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngOnInit() {
-    this.marketPlaceService.findAllGoogle().subscribe((response: any)  => {
+    this.marketPlaceService.findAll().subscribe((response: any)  => {
       this.subject$.next(response.items);
      });
 
