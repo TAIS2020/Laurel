@@ -15,8 +15,8 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-                <div fxLayout="row">
-                    <button mat-raised-button color="primary" (click)="pagar()">Proceder al pago</button>
+                <div fxLayout="row" [style.visibility]="permisoPagar ? 'visible' : 'hidden'">
+                    <button mat-raised-button color="primary" (click)="pagar()"  >Proceder al pago</button>
                 </div>
             </mat-card-actions>
         </mat-card>

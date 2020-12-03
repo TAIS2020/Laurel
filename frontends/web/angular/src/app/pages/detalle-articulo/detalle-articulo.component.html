@@ -64,9 +64,8 @@
 
         </fury-list>
 
-
-        <div fxLayout="column" fxLayoutGap="8px">
-            <button mat-raised-button color="primary" (click)="agregarCarrito()">Agregar carrito</button>
+        <div fxLayout="column" fxLayoutGap="8px"  [style.visibility]="permisoCarrito ? 'visible' : 'hidden'" >
+            <button mat-raised-button color="primary" (click)="agregarCarrito()"  >Agregar carrito</button>
         </div>
 
         <div class="fury-preview-card" fxLayout="column" fxLayout.gt-sm="row">

@@ -116,7 +116,7 @@ export class SidenavService implements OnDestroy {
   }
 
   addItems(items: SidenavItem[]) {  
-    debugger;
+    //debugger;
     var permisos = localStorage.getItem("Permisos");
     if(permisos!= null){
       var permisoJson = JSON.parse(permisos);

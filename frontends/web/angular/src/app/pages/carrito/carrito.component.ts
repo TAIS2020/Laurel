@@ -41,6 +41,8 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
   ] as ListColumn[];
  pageSize = 10;
  dataSource: MatTableDataSource<Carrito> | null;
+ permisoPagar : Boolean = false;
+
 
  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
  @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -56,6 +58,21 @@ export class CarritoComponent implements OnInit, AfterViewInit, OnDestroy  {/**
  }
 
  ngOnInit() {
+  var permisos = localStorage.getItem("Permisos");
+  if(permisos!= null){
+    var permisoJson = JSON.parse(permisos);
+    var length = permisoJson.length;
+    var arr = [];  
+
+    for (var i=0; i < length; i++) {  
+      if(permisoJson[i].item ==  'Pasarela_pagos' ){
+        this.permisoPagar = true;
+      }
+    }
+  }
+
+
+
 
   this.carritoService.findAll().subscribe((items: Carrito[])  => {
     this.subject$.next(items);

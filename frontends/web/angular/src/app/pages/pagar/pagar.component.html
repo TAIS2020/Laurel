@@ -7,7 +7,9 @@
         </div>
     
         <mat-tab-group class="tabs fury-tabs">
-        <mat-tab label="PSE">
+        <mat-tab label="PSE"  >
+
+            <div  [style.visibility]="permisoPSE ? 'visible' : 'hidden'">
             <fury-page-layout-content [fxLayoutGap]="" fxLayout="column">
                 <div [fxLayoutGap]="" fxFlex="noshrink" fxLayout="column" fxLayout.gt-sm="row"
                 fxLayoutAlign.gt-sm="start stretch">
@@ -35,7 +37,7 @@
                                     </mat-form-field>
                                 </div>
 
-                                <div fxLayout="column" fxLayoutGap="8px">
+                                <div fxLayout="column" fxLayoutGap="8px" [style.visibility]="permisoPago ? 'visible' : 'hidden'" >
                                     <button mat-raised-button color="primary" (click)="RealizarPagoPse()" >Realizar Pago</button>
                                 </div>
                             </div>
@@ -43,55 +45,60 @@
                     </fury-card>
                 </div>
             </fury-page-layout-content>
+        </div>
         </mat-tab>
-        <mat-tab label="TC">
+       
+            <mat-tab label="TC" >
 
-            <fury-page-layout-content [fxLayoutGap]="" fxLayout="column">
-                <div [fxLayoutGap]="" fxFlex="noshrink" fxLayout="column" fxLayout.gt-sm="row"
-                fxLayoutAlign.gt-sm="start stretch">
+                <div  [style.visibility]="permisoTC ? 'visible' : 'hidden'">
+                <fury-page-layout-content [fxLayoutGap]="" fxLayout="column">
+                    <div [fxLayoutGap]="" fxFlex="noshrink" fxLayout="column" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="start stretch">
 
-                    <fury-card [fxFlex.gt-sm]=""
-                        class="basic-forms route-animations-elements"
-                        [@fadeInUp]
-                        fxFlex="grow">
+                        <fury-card [fxFlex.gt-sm]=""
+                            class="basic-forms route-animations-elements"
+                            [@fadeInUp]
+                            fxFlex="grow">
 
-                        <Label>Diligencie la información correctamente</Label>
+                            <Label>Diligencie la información correctamente</Label>
 
-                        <fury-card-content fxLayout="column">
-                            <div class="result" fxLayout="column">
-                                <mat-form-field>
-                                    <input matInput placeholder="Numero de Tarjeta" type="text" required>
-                                </mat-form-field>
-                                
-                                <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
-                                    <mat-form-field fxFlex>
-                                    <input matInput placeholder="Nombres" type="text">
+                            <fury-card-content fxLayout="column">
+                                <div class="result" fxLayout="column">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Numero de Tarjeta" type="text" required>
                                     </mat-form-field>
-                                
-                                    <mat-form-field fxFlex>
-                                    <input matInput placeholder="Apellidos" type="text" required>
-                                    </mat-form-field>
+                                    
+                                    <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                                        <mat-form-field fxFlex>
+                                        <input matInput placeholder="Nombres" type="text">
+                                        </mat-form-field>
+                                    
+                                        <mat-form-field fxFlex>
+                                        <input matInput placeholder="Apellidos" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                                        <mat-form-field fxFlex>
+                                        <input matInput placeholder="CVV" type="text">
+                                        </mat-form-field>
+                                    
+                                        <mat-form-field fxFlex>
+                                        <input matInput placeholder="Numero Cuotas" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxLayout="column" fxLayoutGap="8px"  [style.visibility]="permisoPago ? 'visible' : 'hidden'">
+                                        <button mat-raised-button color="primary" (click)="RealizarPagoTC()" >Realizar Pago</button>
+                                    </div>
                                 </div>
-
-                                <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
-                                    <mat-form-field fxFlex>
-                                    <input matInput placeholder="CVV" type="text">
-                                    </mat-form-field>
-                                
-                                    <mat-form-field fxFlex>
-                                    <input matInput placeholder="Numero Cuotas" type="text" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div fxLayout="column" fxLayoutGap="8px">
-                                    <button mat-raised-button color="primary" (click)="RealizarPagoTC()" >Realizar Pago</button>
-                                </div>
-                            </div>
-                        </fury-card-content>
-                    </fury-card>
-                </div>
-            </fury-page-layout-content>
-        </mat-tab>
+                            </fury-card-content>
+                        </fury-card>
+                    </div>
+                </fury-page-layout-content>
+            </div>
+            </mat-tab>
+        
         </mat-tab-group>
     </div>
 </div>

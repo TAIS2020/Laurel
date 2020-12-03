@@ -9,7 +9,7 @@
 	<feature automatic="selected" name="Historial_pagos"/>
 	<feature automatic="selected" manual="selected" name="Pasarela_pagos"/>
 	<feature manual="selected" name="PSE"/>
-	<feature name="TC"/>
+	<feature manual="selected" name="TC"/>
 	<feature automatic="selected" name="Marketplace"/>
 	<feature manual="selected" name="Admon_productos"/>
 	<feature automatic="selected" manual="selected" name="Envios"/>

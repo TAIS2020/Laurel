@@ -19,15 +19,40 @@ import { Router } from '@angular/router';
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 
-export class DetalleMarkplaceComponent  {
+export class DetalleMarkplaceComponent   implements OnInit {
+
+  permisoCarrito : Boolean = false;
+
 
  constructor(private router: Router,
   private dialog: MatDialog) {
  }
 
+
+ ngOnInit() {
+  var permisos = localStorage.getItem("Permisos");
+  if(permisos!= null){
+    var permisoJson = JSON.parse(permisos);
+    var length = permisoJson.length;
+    var arr = [];  
+
+    for (var i=0; i < length; i++) {  
+      if(permisoJson[i].item ==  'Carrito_compras' ){
+        this.permisoCarrito = true;
+      }
+    }
+  }
+ }
+
+
+
  agregarCarrito() {
   console.log("Entro...agregarCarrito.");
     this.router.navigate(['/carrito']);
  }
+
+
+
+
 
 }
