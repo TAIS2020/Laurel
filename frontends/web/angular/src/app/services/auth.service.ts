@@ -3,7 +3,6 @@ import {User} from "../services/user";
 // import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-
 // import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
@@ -42,7 +41,7 @@ export class AuthService {
             .then(idToken => {
                 const headers = new HttpHeaders().set('Type-content', 'application/json')
 
-                return this.http.post("http://localhost:3000/login", {idToken}, {
+                return this.http.post(  '/login', {idToken}, {
                     headers
                 }).toPromise()
             })
