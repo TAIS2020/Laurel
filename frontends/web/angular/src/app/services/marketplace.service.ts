@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment.prod';
-import {Item} from '../pages/tables/all-in-one-table/customer-create-update/item.model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class MarketplaceService {
     const headers = new HttpHeaders();
     headers.append('Type-content', 'application/json');
 
-    return this.http.get(`${environment.backend}/api/v1/marketplace`, {
+    return this.http.get(`/api/v1/marketplace`, {
       headers
     })
   }
